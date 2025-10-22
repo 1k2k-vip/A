@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1k2k</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
- <style>
+
+  <style>
     /* ✅ နောက်ခံ - အမဲ+အဖြူ ပြောင်ပြောင် gradient */
     body {
       background: linear-gradient(145deg, #000000 0%, #222222 25%, #666666 50%, #cccccc 75%, #ffffff 100%);
@@ -15,6 +16,28 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    /* ✅ အကြီးဆုံး title design */
+    .main-title {
+      font-size: 5rem;
+      font-weight: 900;
+      text-align: center;
+      background: linear-gradient(90deg, #00ffcc, #00ff66, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 255, 150, 0.7);
+      margin-top: 40px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffaa, 0 0 30px #00ffaa;
+      }
+      to {
+        text-shadow: 0 0 25px #00ffcc, 0 0 50px #00ff99, 0 0 75px #00ff66;
+      }
     }
 
     /* Glass effect card */
@@ -46,11 +69,6 @@
       color: #fff;
     }
 
-    a.btn-dark, a.btn-light {
-      width: 130px;
-      font-weight: 500;
-    }
-
     footer {
       background: rgba(0,0,0,0.8);
       color: #fff;
@@ -64,7 +82,8 @@
 <body>
 
   <div class="container py-4">
-    <h4 class="text-center text-success mb-4">1k2k</h4>
+    <!-- ✅ စာလုံးအကြီး Title -->
+    <h1 class="main-title mb-5">1k2k</h1>
 
     <!-- ZIVPN App -->
     <div class="card p-3 mb-3">
@@ -83,18 +102,15 @@
 
     <!-- ZIVPN Mod -->
     <div class="card p-3 mb-3 text-center">
-  <!-- ✅ Logo ပုံ အလယ်အလတ်မှာ ထားခြင်း -->
-  <div style="display: flex; justify-content: center;">
-    <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
-         alt="App Logo" 
-         style="width: 30px; height: 30px; border-radius: 20px; margin-bottom: 10px;">
-  </div>
-
-  <!-- Text + Button -->
-  <div class="section-title mb-2">ZIVPN Mod Version 2.0.7</div>
-  <p>Ads Removed ✅</p>
-  <a href="https://t.me/yourlink" class="btn btn-custom" target="_blank">Download App</a>
-</div>
+      <div style="display: flex; justify-content: center;">
+        <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
+             alt="App Logo" 
+             style="width: 40px; height: 40px; border-radius: 20px; margin-bottom: 10px;">
+      </div>
+      <div class="section-title mb-2">ZIVPN Mod Version 2.0.7</div>
+      <p>Ads Removed ✅</p>
+      <a href="https://t.me/yourlink" class="btn btn-custom" target="_blank">Download App</a>
+    </div>
 
     <!-- Support -->
     <div class="card p-3 mb-3 text-center">
@@ -116,6 +132,7 @@
       <a href="#" class="btn btn-custom">Order Now</a>
     </div>
   </div>
+
   <footer>
     © KSOVIP<br>
     All rights reserved.<br>
