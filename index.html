@@ -1,148 +1,359 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1k2k</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BLUEVPN — Example UI</title>
   <style>
-    /* ✅ နောက်ခံ - အမဲ+အဖြူ ပြောင်ပြောင် gradient */
-    body {
-      background: linear-gradient(145deg, #000000 0%, #222222 25%, #666666 50%, #cccccc 75%, #ffffff 100%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    :root{
+      --blue:#2563eb;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f3f6fb;
+      --border:#e6eefc;
+      --radius:12px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:18px 12px;
+      box-sizing:border-box;
     }
 
-    /* ✅ အကြီးဆုံး title design */
-    .main-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      text-align: center;
-      background: linear-gradient(90deg, #00ffcc, #00ff66, #00ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(0, 255, 150, 0.7);
-      margin-top: 40px;
-      animation: glow 2s ease-in-out infinite alternate;
+    /* Header */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:44px;height:36px;
+      background:linear-gradient(180deg,#2b6df6,#1e40af);
+      color:white;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(37,99,235,0.15);
+    }
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      color:var(--blue);
+      letter-spacing:0.6px;
+    }
+    .menu-btn{
+      width:36px;height:36px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:white;
+      cursor:pointer;
     }
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffaa, 0 0 30px #00ffaa;
-      }
-      to {
-        text-shadow: 0 0 25px #00ffcc, 0 0 50px #00ff99, 0 0 75px #00ff66;
-      }
+    /* Big title */
+    .server-title{
+      margin:10px 0 18px 0;
+      background:rgba(60,130,255,0.12);
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:6px;
+      font-weight:700;
+      color:#1946a8;
+      font-size:20px;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02);
     }
 
-    /* Glass effect card */
-    .card {
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Card */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 8px 28px rgba(15,23,42,0.06);
+      padding:16px;
+      border:1px solid var(--border);
+      max-width:760px;
+      margin:0 auto;
+    }
+    .card .plan-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .plan-name{
+      font-weight:800;
+      font-size:17px;
+    }
+    .badge{
+      background:var(--blue);
+      color:white;
+      padding:6px 10px;
+      border-radius:6px;
+      font-weight:700;
+      font-size:13px;
+    }
+    .section-title{
+      margin-top:8px;
+      margin-bottom:8px;
+      color:var(--muted);
+      font-size:14px;
     }
 
-    .btn-custom {
-      background: linear-gradient(90deg, #00a86b, #00cc88);
-      color: #fff;
-      border-radius: 10px;
-      padding: 10px 25px;
-      font-weight: 600;
-      border: none;
-      transition: 0.3s;
+    textarea.config{
+      width:100%;
+      min-height:84px;
+      border-radius:8px;
+      border:1px solid #e6eefc;
+      padding:12px;
+      font-family:monospace;
+      resize:vertical;
+      background:#fbfdff;
+      box-sizing:border-box;
     }
 
-    .btn-custom:hover {
-      opacity: 0.85;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border-radius:8px;
+      border:0;
+      cursor:pointer;
+      user-select:none;
+      font-weight:700;
+    }
+    .btn.primary{
+      background:var(--blue);
+      color:white;
+      box-shadow:0 6px 18px rgba(37,99,235,0.18);
+    }
+    .btn.ghost{
+      background:white;
+      border:1px solid var(--border);
+      color:#0f172a;
+    }
+    .row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .qr-col{
+      flex:1 1 260px;
+      min-width:220px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+    }
+    .config-col{
+      flex:1 1 300px;
+      min-width:220px;
     }
 
-    .section-title {
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: #fff;
+    .qr-box{
+      width:220px;
+      height:220px;
+      border-radius:6px;
+      box-shadow:0 6px 18px rgba(2,6,23,0.06);
+      border:1px solid #eef6ff;
+      background:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
+    }
+    .qr-box img{max-width:100%; max-height:100%; display:block; border-radius:3px; cursor:pointer;}
+
+    .small-muted{
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
     }
 
-    footer {
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 14px;
-      border-top: 1px solid rgba(255,255,255,0.2);
+    .download-btn{
+      width:100%;
+      display:flex;
+      margin-top:8px;
+      gap:8px;
+    }
+
+    /* responsive */
+    @media (max-width:680px){
+      body{padding:12px 10px}
+      .server-title{font-size:18px;padding:8px 14px}
+      .card{padding:14px}
+      .row{flex-direction:column-reverse}
+      .qr-col{align-items:center}
     }
   </style>
 </head>
 <body>
-
-  <div class="container py-4">
-    <!-- ✅ စာလုံးအကြီး Title -->
-    <h1 class="main-title mb-5">1k2k</h1>
-
-    <!-- ZIVPN App Card with Medium Logo Above Title -->
-<div class="card p-3 mb-3 text-center">
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-    <!-- Medium Logo -->
-    <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
-         alt="ZIVPN Logo" 
-         style="width: 30px; height: 30px; border-radius: 10px;">
-    <!-- Title -->
-    <div class="section-title mb-0" style="font-size: 1.3rem; font-weight: 700;">
-      ZIVPN App နှင့် DTAC အရံနက်နဲတွဲသုံးရပါမယ်
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">B</div>
+      <h1>BLUEVPN</h1>
     </div>
+    <button class="menu-btn" aria-label="menu">
+      <svg width="18" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
 
-  <p class="mt-2">1 month 1 device - 50 ဘတ် ✅<br>🌿TH Server 🇹🇭</p>
-  <p>အစမ်းသုံးနိုင်ပါတယ်</p>
-  <p class="text-danger">⚠️ မိမိနဲ့ အဆင်ပြေမှဝယ်ယူပါ ⚠️</p>
-</div>
+  <div class="server-title">SG1 - AIS 64k+128k</div>
 
-    <!-- Updated File -->
-        <div class="card p-3 mb-3 text-center">
-      <div class="section-title mb-2">အပ်ဒိတ်ထားပြီးသော ဖိုင်များ</div>
-      <p>Updated : 07-10-2025</p>
-      <a href="#" class="btn btn-custom">Download File</a>
+  <div class="card" role="region" aria-label="plan card">
+    <div class="plan-row">
+      <div class="plan-name">3DAYS 500GB VLESS</div>
+      <div class="badge">Active</div>
     </div>
 
-    <!-- ZIVPN Mod -->
-    <div class="card p-3 mb-3 text-center">
-      <div style="display: flex; justify-content: center;">
-        <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
-             alt="App Logo" 
-             style="width: 40px; height: 40px; border-radius: 20px; margin-bottom: 10px;">
+    <div class="section-title">Configuration</div>
+    <div class="row">
+      <div class="config-col">
+        <textarea id="configText" class="config" readonly>vless://065680b943@sg1.v2ray.bluevpn.onl:8080?type=tcp&encryption=none&path=%2Fbluevpn.tech&host=www.speedtest.net.onelin...
+</textarea>
+
+        <div style="margin-top:10px; display:flex; gap:10px;">
+          <button id="copyBtn" class="btn primary" title="Copy configuration">📋 Copy Configuration</button>
+          <button id="showBtn" class="btn ghost" title="Show full config">🔍 View Full</button>
+        </div>
       </div>
-      <div class="section-title mb-2">ZIVPN Mod Version 2.0.7</div>
-      <p>Ads Removed ✅</p>
-      <a href="https://t.me/yourlink" class="btn btn-custom" target="_blank">Download App</a>
-    </div>
 
-    <!-- VPS -->
-    <div class="card p-3 text-center">
-      <div class="section-title mb-2">VPS Server File</div>
-      <p><b>50 THB / month</b></p>
-      <ul class="text-start">
-        <li>Social App များအသုံးပြုနိုင်သည်။</li>
-        <li>Video ကြည့်ရှုနိုင်သည်။</li>
-        <li>Download များပြုလုပ်နိုင်သည်။</li>
-        <li>Games ဖိုင်များဖွင့်နိုင်သည်။</li>
-        <li>မြန်နှုန်းမြင့် သုံးစွဲနိုင်သည်။</li>
-      </ul>
-      <a href="#" class="btn btn-custom">Order Now</a>
+      <div class="qr-col">
+        <div class="section-title">QR Code</div>
+
+        <div id="qrBox" class="qr-box" title="Click to view full size">
+          <!-- sample QR as inline data URL; replace with real QR src -->
+          <img id="qrImg" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'>
+            <rect width='100' height='100' fill='%23ffffff'/>
+            <rect x='8' y='8' width='24' height='24' fill='%23000000'/>
+            <rect x='68' y='8' width='24' height='24' fill='%23000000'/>
+            <rect x='8' y='68' width='24' height='24' fill='%23000000'/>
+            <rect x='40' y='40' width='6' height='6' fill='%23000000'/>
+            <rect x='50' y='50' width='4' height='4' fill='%23000000'/>
+            <rect x='60' y='50' width='4' height='4' fill='%23000000'/>
+            <rect x='30' y='60' width='4' height='4' fill='%23000000'/>
+            <rect x='70' y='70' width='6' height='6' fill='%23000000'/>
+          </svg>" alt="QR Code" />
+        </div>
+
+        <div class="small-muted">Click to view full size</div>
+
+        <div class="download-btn" style="width:100%; margin-top:8px;">
+          <button id="downloadQR" class="btn ghost" style="flex:1;">⬇️ Download QR Code</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <footer>
-    © KSOVIP<br>
-    All rights reserved.<br>
-    <a href="#" class="text-light text-decoration-none">Facebook</a> |
-    <a href="#" class="text-light text-decoration-none">Telegram</a>
-  </footer>
+  <!-- modal for full-size view -->
+  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(2,6,23,0.6); align-items:center; justify-content:center; z-index:40;">
+    <div style="max-width:92%; max-height:92%; background:white; padding:12px; border-radius:8px; box-shadow:0 10px 40px rgba(2,6,23,0.6);">
+      <div style="display:flex; justify-content:flex-end;">
+        <button id="closeModal" class="btn ghost">✕ Close</button>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:center; padding:6px;">
+        <img id="modalImg" src="" style="max-width:100%; max-height:80vh; display:block;" alt="Full QR">
+      </div>
+    </div>
+  </div>
 
+  <script>
+    // copy config
+    const copyBtn = document.getElementById('copyBtn');
+    const configText = document.getElementById('configText');
+    copyBtn.addEventListener('click', async ()=>{
+      try {
+        await navigator.clipboard.writeText(configText.value);
+        copyBtn.textContent = '✅ Copied';
+        setTimeout(()=>copyBtn.textContent = '📋 Copy Configuration',1600);
+      } catch(e){
+        // fallback
+        configText.select();
+        document.execCommand('copy');
+        copyBtn.textContent = '✅ Copied';
+        setTimeout(()=>copyBtn.textContent = '📋 Copy Configuration',1600);
+      }
+    });
+
+    // view full config (toggle)
+    const showBtn = document.getElementById('showBtn');
+    let expanded = false;
+    showBtn.addEventListener('click', ()=>{
+      if(!expanded){
+        configText.style.minHeight = '160px';
+        configText.removeAttribute('readonly');
+        showBtn.textContent = '🔒 Lock';
+      } else {
+        configText.style.minHeight = '84px';
+        configText.setAttribute('readonly','');
+        showBtn.textContent = '🔍 View Full';
+      }
+      expanded = !expanded;
+    });
+
+    // modal for full QR
+    const qrBox = document.getElementById('qrBox');
+    const qrImg = document.getElementById('qrImg');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+
+    qrBox.addEventListener('click', ()=>{
+      modal.style.display = 'flex';
+      modalImg.src = qrImg.src;
+    });
+    closeModal.addEventListener('click', ()=> modal.style.display = 'none');
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.style.display = 'none'; });
+
+    // download qr
+    document.getElementById('downloadQR').addEventListener('click', async ()=>{
+      // create canvas, draw image, save
+      const img = qrImg;
+      // create an offscreen image to ensure loaded
+      const tmp = new Image();
+      tmp.crossOrigin = 'anonymous';
+      tmp.src = img.src;
+      tmp.onload = function(){
+        const canvas = document.createElement('canvas');
+        canvas.width = tmp.naturalWidth || 800;
+        canvas.height = tmp.naturalHeight || 800;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(tmp, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(function(blob){
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'bluevpn-qr.png';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        });
+      };
+      tmp.onerror = function(){
+        alert('QR cannot be downloaded due to cross-origin restrictions. Replace with local image or data URL.');
+      };
+    });
+  </script>
 </body>
 </html>
