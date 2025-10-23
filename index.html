@@ -15,16 +15,21 @@
       --radius:12px;
       font-family:"Helvetica Neue", Arial, sans-serif;
     }
+    /* ✅ နောက်ခံအပြည့်အောင် ပြင်ထားပါ */
     body{
       margin:0;
+      width:100vw;
       height:100vh;
-      background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;
-      background-attachment:fixed;
+      background:linear-gradient(160deg, var(--bg1), var(--bg2));
       background-repeat:no-repeat;
+      background-attachment:fixed;
       background-size:cover;
+      background-position:center;
       color:#0f172a;
       padding:18px 12px;
       overflow-x:hidden;
+      display:flex;
+      flex-direction:column;
     }
     .topbar{
       display:flex;
