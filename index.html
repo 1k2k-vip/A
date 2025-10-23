@@ -130,15 +130,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VMESS Configuration</title>
+  <title>VMESS Configuration Panel</title>
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #f5f7fa;
+      background: #f4f6fb;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 30px 10px;
+      gap: 20px;
     }
     .card {
       background: #fff;
@@ -158,9 +160,9 @@
     .dot {
       width: 10px;
       height: 10px;
-      background: #10b981;
       border-radius: 50%;
     }
+    .dot.active { background: #10b981; }
     .status {
       background: #2563eb;
       color: white;
@@ -204,12 +206,8 @@
       align-items: center;
       gap: 8px;
     }
-    .btn:hover {
-      background: #1d4ed8;
-    }
-    .btn:active {
-      transform: scale(0.98);
-    }
+    .btn:hover { background: #1d4ed8; }
+    .btn:active { transform: scale(0.98); }
     .modal {
       position: fixed;
       inset: 0;
@@ -253,16 +251,44 @@
   </style>
 </head>
 <body>
+
+  <!-- Dtac -->
   <div class="card">
-    <div class="title"><div class="dot"></div>3DAYS 500GB VMESS</div>
+    <div class="title"><div class="dot active"></div>Dtac 3Days 500GB VMESS</div>
     <div class="status">Active</div>
     <div class="label">Configuration</div>
-    <div id="config" class="config-box">
-      vmess://ewogICJ2IjogIjIiLCAgICJwcyI6ICJCTFVVRSIsICJob3N0IjogInZtZXNzLnNlcnZlci5jb20iCn0=
+    <div id="config-dtac" class="config-box">
+      vmess://ZXdvZ0lDSjJiV2xsZDJWMFpXNTBJR1JwYjI0Z0lDSmhiR2NpT2lBaU5USXdOVFEzTWpnME1qUXdPVGt5TlNJc0lDSjBlWEJsSWpvaWJtOXVMM1Z3WlhKaGRHOXlaU0lzSUNKaGRYUm9Jam9pZEhKaGJuTmhhVzRn
     </div>
-    <button class="btn" onclick="copyConfig()">📋 Copy Configuration</button>
-    <button class="btn" style="background:#10b981;" onclick="viewFull()">🔍 View Full</button>
+    <button class="btn" onclick="copyConfig('config-dtac', this)">📋 Copy Configuration</button>
+    <button class="btn" style="background:#10b981;" onclick="viewFull('config-dtac')">🔍 View Full</button>
   </div>
+
+  <!-- Myanmar -->
+  <div class="card">
+    <div class="title"><div class="dot active"></div>Myanmar 7Days 1TB VMESS</div>
+    <div class="status">Active</div>
+    <div class="label">Configuration</div>
+    <div id="config-myanmar" class="config-box">
+      vmess://ZXdvZ0lDSjFjbVZ1YVhOMFpYSjVkR1ZqYjI1MElIUnZjeUk2SWpNd01URXdNVEEzTlRZMk9URXdOaUlzSUNKaGRYUm9Jam9pZEhKaGJuTmhhVzRn
+    </div>
+    <button class="btn" onclick="copyConfig('config-myanmar', this)">📋 Copy Configuration</button>
+    <button class="btn" style="background:#10b981;" onclick="viewFull('config-myanmar')">🔍 View Full</button>
+  </div>
+
+  <!-- AIS -->
+  <div class="card">
+    <div class="title"><div class="dot active"></div>AIS 30Days Unlimited VMESS</div>
+    <div class="status">Active</div>
+    <div class="label">Configuration</div>
+    <div id="config-ais" class="config-box">
+      vmess://ZXdvZ0lDSnphR0Z5WldOMFlTQnBjeUk2SWpVd05qSTBOREl6TURZMU9UQTRPQ0lzSUNKaGRYUm9Jam9pZEhKaGJuTmhhVzRn
+    </div>
+    <button class="btn" onclick="copyConfig('config-ais', this)">📋 Copy Configuration</button>
+    <button class="btn" style="background:#10b981;" onclick="viewFull('config-ais')">🔍 View Full</button>
+  </div>
+
+  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <h3>🔍 Full Configuration</h3>
@@ -270,26 +296,23 @@
       <button class="close-btn" onclick="closeModal()">Close</button>
     </div>
   </div>
+
   <script>
-    function copyConfig() {
-      const configText = document.getElementById('config').innerText;
-      navigator.clipboard.writeText(configText);
-      const btn = document.querySelector('.btn');
+    function copyConfig(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text);
       btn.innerText = '✅ Copied!';
       setTimeout(() => btn.innerText = '📋 Copy Configuration', 1500);
     }
-    function viewFull() {
-      const modal = document.getElementById('modal');
-      const fullText = document.getElementById('config').innerText;
-      document.getElementById('fullText').innerText = fullText;
-      modal.style.display = 'flex';
+    function viewFull(id) {
+      const text = document.getElementById(id).innerText;
+      document.getElementById('fullText').innerText = text;
+      document.getElementById('modal').style.display = 'flex';
     }
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
   </script>
-</body>
-</html>
   </div> 
 </div>
 <!-- 🔆 Theme Toggle Button -->
