@@ -130,15 +130,22 @@
   <div class="section-title mb-2" style="color: #ff0000; font-weight: bold;">
     VPS Server Info
   </div>
-  <button id="copyBtn" class="btn btn-custom mt-2">vggggvvvvvvgfcfcfdcdzcdzfsxdddffddfdxxxccfffffgggggdf</button>
+
+  <!-- User input field ထဲမှာ စာသားထည့်ထားခြင်း -->
+  <input type="text" id="userText" value="စားရေယူမယ်" readonly
+         style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
+
+  <a href="#" class="btn btn-custom">Order Now</a>
+  <!-- Copy button -->
+  <button id="copyBtn" class="btn btn-custom mt-2">Copy Text</button>
 </div>
 
 <script>
   const copyBtn = document.getElementById('copyBtn');
-  const copyText = document.getElementById('copyText');
+  const userText = document.getElementById('userText');
 
   copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(copyText.innerText)
+    navigator.clipboard.writeText(userText.value)
       .then(() => {
         copyBtn.textContent = 'Copied!';
         setTimeout(() => copyBtn.textContent = 'Copy Text', 1500);
