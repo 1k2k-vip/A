@@ -8,67 +8,77 @@
     :root{
       --blue:#2563eb;
       --muted:#6b7280;
-      --card:#ffffff;
       --bg:#f3f6fb;
+      --card:#ffffff;
       --border:#e6eefc;
       --radius:12px;
       font-family: "Helvetica Neue", Arial, sans-serif;
     }
-    html,body{height:100%}
     body{
       margin:0;
       background:var(--bg);
       color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       padding:18px 12px;
-      box-sizing:border-box;
     }
-
-    /* Header */
     .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      margin-bottom:14px;
     }
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
     }
     .logo{
-      width:44px;height:36px;
+      width:38px;
+      height:34px;
       background:linear-gradient(180deg,#2b6df6,#1e40af);
       color:white;
-      display:inline-flex;
+      display:flex;
       align-items:center;
       justify-content:center;
       font-weight:700;
       border-radius:8px;
-      box-shadow:0 6px 18px rgba(37,99,235,0.15);
     }
-    .brand h1{
-      margin:0;
-      font-size:20px;
-      color:var(--blue);
-      letter-spacing:0.6px;
-    }
+    .brand h1{margin:0;font-size:20px;color:var(--blue);}
     .menu-btn{
       width:36px;height:36px;
+      border:none;
       border-radius:8px;
-      border:1px solid var(--border);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
       background:white;
+      display:flex;align-items:center;justify-content:center;
       cursor:pointer;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+    .menu-panel{
+      position:fixed;
+      top:0;right:-240px;
+      width:220px;
+      height:100%;
+      background:white;
+      box-shadow:-2px 0 10px rgba(0,0,0,0.1);
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      transition:all 0.3s ease;
+      z-index:100;
+    }
+    .menu-panel.active{right:0;}
+    .menu-link{
+      text-decoration:none;
+      font-weight:600;
+      color:var(--blue);
+      background:#eff6ff;
+      padding:10px 12px;
+      border-radius:8px;
+      text-align:center;
+      box-shadow:inset 0 0 0 1px #dbeafe;
     }
 
-    /* Big title */
     .server-title{
-      margin:10px 0 18px 0;
+      margin:14px 0;
       background:rgba(60,130,255,0.12);
       display:inline-block;
       padding:10px 18px;
@@ -76,10 +86,7 @@
       font-weight:700;
       color:#1946a8;
       font-size:20px;
-      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02);
     }
-
-    /* Card */
     .card{
       background:var(--card);
       border-radius:var(--radius);
@@ -87,18 +94,15 @@
       padding:16px;
       border:1px solid var(--border);
       max-width:760px;
-      margin:0 auto;
+      margin:auto;
     }
-    .card .plan-row{
+    .plan-row{
       display:flex;
       align-items:center;
       gap:12px;
-      margin-bottom:12px;
+      margin-bottom:10px;
     }
-    .plan-name{
-      font-weight:800;
-      font-size:17px;
-    }
+    .plan-name{font-weight:800;font-size:17px;}
     .badge{
       background:var(--blue);
       color:white;
@@ -108,24 +112,19 @@
       font-size:13px;
     }
     .section-title{
-      margin-top:8px;
-      margin-bottom:8px;
+      margin-top:10px;
       color:var(--muted);
       font-size:14px;
     }
-
-    textarea.config{
+    textarea{
       width:100%;
       min-height:84px;
       border-radius:8px;
       border:1px solid #e6eefc;
       padding:12px;
       font-family:monospace;
-      resize:vertical;
       background:#fbfdff;
-      box-sizing:border-box;
     }
-
     .btn{
       display:inline-flex;
       align-items:center;
@@ -134,74 +133,10 @@
       border-radius:8px;
       border:0;
       cursor:pointer;
-      user-select:none;
       font-weight:700;
     }
-    .btn.primary{
-      background:var(--blue);
-      color:white;
-      box-shadow:0 6px 18px rgba(37,99,235,0.18);
-    }
-    .btn.ghost{
-      background:white;
-      border:1px solid var(--border);
-      color:#0f172a;
-    }
-    .row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:flex-start;
-    }
-    .qr-col{
-      flex:1 1 260px;
-      min-width:220px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:center;
-      justify-content:center;
-    }
-    .config-col{
-      flex:1 1 300px;
-      min-width:220px;
-    }
-
-    .qr-box{
-      width:220px;
-      height:220px;
-      border-radius:6px;
-      box-shadow:0 6px 18px rgba(2,6,23,0.06);
-      border:1px solid #eef6ff;
-      background:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px;
-    }
-    .qr-box img{max-width:100%; max-height:100%; display:block; border-radius:3px; cursor:pointer;}
-
-    .small-muted{
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-    }
-
-    .download-btn{
-      width:100%;
-      display:flex;
-      margin-top:8px;
-      gap:8px;
-    }
-
-    /* responsive */
-    @media (max-width:680px){
-      body{padding:12px 10px}
-      .server-title{font-size:18px;padding:8px 14px}
-      .card{padding:14px}
-      .row{flex-direction:column-reverse}
-      .qr-col{align-items:center}
-    }
+    .btn.primary{background:var(--blue);color:white;}
+    .btn.ghost{background:white;border:1px solid var(--border);}
   </style>
 </head>
 <body>
@@ -210,150 +145,41 @@
       <div class="logo">B</div>
       <h1>BLUEVPN</h1>
     </div>
-    <button class="menu-btn" aria-label="menu">
-      <svg width="18" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <button id="menuBtn" class="menu-btn">
+      <svg width="18" height="14" viewBox="0 0 24 24" fill="none">
         <path d="M3 6h18M3 12h18M3 18h18" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
     </button>
   </div>
 
+  <div id="menuPanel" class="menu-panel">
+    <a href="https://www.facebook.com/share/1DyWpipj6k/" target="_blank" class="menu-link">🌐 Facebook Page</a>
+  </div>
+
   <div class="server-title">SG1 - AIS 64k+128k</div>
 
-  <div class="card" role="region" aria-label="plan card">
+  <div class="card">
     <div class="plan-row">
       <div class="plan-name">3DAYS 500GB VLESS</div>
       <div class="badge">Active</div>
     </div>
 
     <div class="section-title">Configuration</div>
-    <div class="row">
-      <div class="config-col">
-        <textarea id="configText" class="config" readonly>vless://065680b943@sg1.v2ray.bluevpn.onl:8080?type=tcp&encryption=none&path=%2Fbluevpn.tech&host=www.speedtest.net.onelin...
-</textarea>
+    <textarea readonly>vless://065680b943@sg1.v2ray.bluevpn.onl:8080?type=tcp&encryption=none&path=%2Fbluevpn.tech&host=www.speedtest.net.onelin...</textarea>
+    <br>
+    <button class="btn primary">📋 Copy Configuration</button>
+    <button class="btn ghost">🔍 View Full</button>
 
-        <div style="margin-top:10px; display:flex; gap:10px;">
-          <button id="copyBtn" class="btn primary" title="Copy configuration">📋 Copy Configuration</button>
-          <button id="showBtn" class="btn ghost" title="Show full config">🔍 View Full</button>
-        </div>
-      </div>
-
-      <div class="qr-col">
-        <div class="section-title">QR Code</div>
-
-        <div id="qrBox" class="qr-box" title="Click to view full size">
-          <!-- sample QR as inline data URL; replace with real QR src -->
-          <img id="qrImg" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'>
-            <rect width='100' height='100' fill='%23ffffff'/>
-            <rect x='8' y='8' width='24' height='24' fill='%23000000'/>
-            <rect x='68' y='8' width='24' height='24' fill='%23000000'/>
-            <rect x='8' y='68' width='24' height='24' fill='%23000000'/>
-            <rect x='40' y='40' width='6' height='6' fill='%23000000'/>
-            <rect x='50' y='50' width='4' height='4' fill='%23000000'/>
-            <rect x='60' y='50' width='4' height='4' fill='%23000000'/>
-            <rect x='30' y='60' width='4' height='4' fill='%23000000'/>
-            <rect x='70' y='70' width='6' height='6' fill='%23000000'/>
-          </svg>" alt="QR Code" />
-        </div>
-
-        <div class="small-muted">Click to view full size</div>
-
-        <div class="download-btn" style="width:100%; margin-top:8px;">
-          <button id="downloadQR" class="btn ghost" style="flex:1;">⬇️ Download QR Code</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- modal for full-size view -->
-  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(2,6,23,0.6); align-items:center; justify-content:center; z-index:40;">
-    <div style="max-width:92%; max-height:92%; background:white; padding:12px; border-radius:8px; box-shadow:0 10px 40px rgba(2,6,23,0.6);">
-      <div style="display:flex; justify-content:flex-end;">
-        <button id="closeModal" class="btn ghost">✕ Close</button>
-      </div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:6px;">
-        <img id="modalImg" src="" style="max-width:100%; max-height:80vh; display:block;" alt="Full QR">
-      </div>
-    </div>
+    <div class="section-title">QR Code</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bluevpn.tech" alt="QR" style="border:1px solid #eee;border-radius:8px;">
+    <div style="color:#6b7280;font-size:13px;">Click to view full size</div>
+    <button class="btn ghost">⬇️ Download QR Code</button>
   </div>
 
   <script>
-    // copy config
-    const copyBtn = document.getElementById('copyBtn');
-    const configText = document.getElementById('configText');
-    copyBtn.addEventListener('click', async ()=>{
-      try {
-        await navigator.clipboard.writeText(configText.value);
-        copyBtn.textContent = '✅ Copied';
-        setTimeout(()=>copyBtn.textContent = '📋 Copy Configuration',1600);
-      } catch(e){
-        // fallback
-        configText.select();
-        document.execCommand('copy');
-        copyBtn.textContent = '✅ Copied';
-        setTimeout(()=>copyBtn.textContent = '📋 Copy Configuration',1600);
-      }
-    });
-
-    // view full config (toggle)
-    const showBtn = document.getElementById('showBtn');
-    let expanded = false;
-    showBtn.addEventListener('click', ()=>{
-      if(!expanded){
-        configText.style.minHeight = '160px';
-        configText.removeAttribute('readonly');
-        showBtn.textContent = '🔒 Lock';
-      } else {
-        configText.style.minHeight = '84px';
-        configText.setAttribute('readonly','');
-        showBtn.textContent = '🔍 View Full';
-      }
-      expanded = !expanded;
-    });
-
-    // modal for full QR
-    const qrBox = document.getElementById('qrBox');
-    const qrImg = document.getElementById('qrImg');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const closeModal = document.getElementById('closeModal');
-
-    qrBox.addEventListener('click', ()=>{
-      modal.style.display = 'flex';
-      modalImg.src = qrImg.src;
-    });
-    closeModal.addEventListener('click', ()=> modal.style.display = 'none');
-    modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.style.display = 'none'; });
-
-    // download qr
-    document.getElementById('downloadQR').addEventListener('click', async ()=>{
-      // create canvas, draw image, save
-      const img = qrImg;
-      // create an offscreen image to ensure loaded
-      const tmp = new Image();
-      tmp.crossOrigin = 'anonymous';
-      tmp.src = img.src;
-      tmp.onload = function(){
-        const canvas = document.createElement('canvas');
-        canvas.width = tmp.naturalWidth || 800;
-        canvas.height = tmp.naturalHeight || 800;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0,0,canvas.width,canvas.height);
-        ctx.drawImage(tmp, 0, 0, canvas.width, canvas.height);
-        canvas.toBlob(function(blob){
-          const a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          a.download = 'bluevpn-qr.png';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        });
-      };
-      tmp.onerror = function(){
-        alert('QR cannot be downloaded due to cross-origin restrictions. Replace with local image or data URL.');
-      };
-    });
+    const btn=document.getElementById('menuBtn');
+    const panel=document.getElementById('menuPanel');
+    btn.onclick=()=>panel.classList.toggle('active');
   </script>
 </body>
 </html>
