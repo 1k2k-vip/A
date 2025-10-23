@@ -131,28 +131,43 @@
     VPS Server Info
   </div>
 
-  <!-- User input field ထဲမှာ စာသားထည့်ထားခြင်း -->
-  <input type="text" id="userText" value="စားရေယူမယ်" readonly
+  <!-- Myanmar -->
+  <input type="text" id="myanmarText" value="Myanmar" readonly
          style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
+  <button id="copyMyanmar" class="btn btn-custom mb-3">Copy Myanmar</button>
 
-  <a href="#" class="btn btn-custom">Order Now</a>
-  <!-- Copy button -->
-  <button id="copyBtn" class="btn btn-custom mt-2">Copy Text</button>
+  <!-- Dtac -->
+  <input type="text" id="dtacText" value="Dtac" readonly
+         style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
+  <button id="copyDtac" class="btn btn-custom mb-3">Copy Dtac</button>
+
+  <!-- Ais -->
+  <input type="text" id="aisText" value="Ais" readonly
+         style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
+  <button id="copyAis" class="btn btn-custom mb-3">Copy Ais</button>
 </div>
 
 <script>
-  const copyBtn = document.getElementById('copyBtn');
-  const userText = document.getElementById('userText');
+  function setupCopy(buttonId, inputId) {
+    const btn = document.getElementById(buttonId);
+    const input = document.getElementById(inputId);
 
-  copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(userText.value)
-      .then(() => {
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => copyBtn.textContent = 'Copy Text', 1500);
-      })
-      .catch(err => console.error('Failed to copy:', err));
-  });
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(input.value)
+        .then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = 'Copy ' + input.value, 1500);
+        })
+        .catch(err => console.error('Failed to copy:', err));
+    });
+  }
+
+  setupCopy('copyMyanmar', 'myanmarText');
+  setupCopy('copyDtac', 'dtacText');
+  setupCopy('copyAis', 'aisText');
 </script>
+</div>
+  </div>
 <!-- 🔆 Theme Toggle Button -->
 <button id="themeToggle" class="theme-btn">🌙 အမှောင်</button>
 
