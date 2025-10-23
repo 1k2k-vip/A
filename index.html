@@ -130,15 +130,22 @@
   <div class="section-title mb-2" style="color: #ff0000; font-weight: bold;">
     VPS Server Info
   </div>
-
-  <!-- ဒီနေရာမှာ စာသားထည့်ရမယ် -->
-  <p id="copyText" style="color: #fff; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">
-    စားရေယူမယ်
-  </p>
-
-  <a href="#" class="btn btn-custom">Order Now</a>
-  <button id="copyBtn" class="btn btn-custom mt-2">Copy Text</button>
+  <button id="copyBtn" class="btn btn-custom mt-2">vggggvvvvvvgfcfcfdcdzcdzfsxdddffddfdxxxccfffffgggggdf</button>
 </div>
+
+<script>
+  const copyBtn = document.getElementById('copyBtn');
+  const copyText = document.getElementById('copyText');
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(copyText.innerText)
+      .then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy Text', 1500);
+      })
+      .catch(err => console.error('Failed to copy:', err));
+  });
+</script>
 <!-- 🔆 Theme Toggle Button -->
 <button id="themeToggle" class="theme-btn">🌙 အမှောင်</button>
 
