@@ -275,7 +275,6 @@
     <button class="btn" onclick="copyConfig('config-myanmar', this)">📋 Copy Configuration</button>
     <button class="btn" style="background:#10b981;" onclick="viewFull('config-myanmar')">🔍 View Full</button>
   </div>
-</div>
   
   <!-- AIS -->
   <div class="card">
@@ -298,7 +297,7 @@
     </div>
   </div>
 
-  <script>
+  <div class="card">
     function copyConfig(id, btn) {
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text);
@@ -313,7 +312,7 @@
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
     }
-  </script>
+  </div>
 
 <!-- 🔆 Theme Toggle Button -->
 <button id="themeToggle" class="theme-btn">🌙 အမှောင်</button>
