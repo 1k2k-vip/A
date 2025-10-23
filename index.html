@@ -6,7 +6,7 @@
   <title>1k2k</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <style>
-    /* ✅ နောက်ခံ gradient */
+    /* ✅ နောက်ခံ - အမဲ+အဖြူ ပြောင်ပြောင် gradient */
     body {
       background: linear-gradient(145deg, #000000 0%, #222222 25%, #666666 50%, #cccccc 75%, #ffffff 100%);
       background-attachment: fixed;
@@ -15,7 +15,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow-x: hidden;
     }
 
     /* ✅ အကြီးဆုံး title design */
@@ -32,8 +31,12 @@
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffaa, 0 0 30px #00ffaa; }
-      to   { text-shadow: 0 0 25px #00ffcc, 0 0 50px #00ff99, 0 0 75px #00ff66; }
+      from {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffaa, 0 0 30px #00ffaa;
+      }
+      to {
+        text-shadow: 0 0 25px #00ffcc, 0 0 50px #00ff99, 0 0 75px #00ff66;
+      }
     }
 
     /* Glass effect card */
@@ -55,9 +58,15 @@
       transition: 0.3s;
     }
 
-    .btn-custom:hover { opacity: 0.85; }
+    .btn-custom:hover {
+      opacity: 0.85;
+    }
 
-    .section-title { font-weight: bold; font-size: 1.2rem; color: #fff; }
+    .section-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
+    }
 
     footer {
       background: rgba(0,0,0,0.8);
@@ -67,74 +76,13 @@
       font-size: 14px;
       border-top: 1px solid rgba(255,255,255,0.2);
     }
-
-    /* ✅ Snowflakes */
-    #snow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
-    .flake {
-      position: absolute;
-      top: -10px;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation-name: fall;
-      animation-timing-function: linear;
-    }
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
-    }
   </style>
 </head>
 <body>
 
-<!-- Snow Animation Container -->
-<div id="snow"></div>
-
-<div class="container py-4">
-  <!-- ✅ စာလုံးအကြီး Title -->
-  <h1 class="main-title mb-5">1k2k</h1>
-  <!-- ZIVPN App -->
-  <div class="card p-3 mb-3 text-center">
-    <div class="section-title mb-2">ZIVPN App နှင့် DTAC အရံနက် နဲတွဲသုံးရပါမယ်</div>
-    <p>1 month 1 device - 50 ဘတ် ✅<br>🌿TH Server 🇹🇭</p>
-    <p>အစမ်းသုံးနိုင်ပါတယ်</p>
-    <p class="text-danger">⚠️ မိမိနဲ့ အဆင်ပြေမှဝယ်ယူပါ ⚠️</p>
-  </div>
-
-  <!-- Updated File -->
-  <div class="card p-3 mb-3 text-center">
-    <div class="section-title mb-2">အပ်ဒိတ်ထားပြီးသော ဖိုင်များ</div>
-    <p>Updated : 07-10-2025</p>
-    <a href="#" class="btn btn-custom">Download File</a>
-  </div>
-
-  <!-- ZIVPN Mod -->
-  <div class="card p-3 mb-3 text-center">
-    <div style="display: flex; justify-content: center;">
-      <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
-           alt="App Logo" style="width: 40px; height: 40px; border-radius: 20px; margin-bottom: 10px;">
-    </div>
-    <div class="section-title mb-2">ZIVPN Mod Version 2.0.7</div>
-    <p>Ads Removed ✅</p>
-    <a href="https://t.me/yourlink" class="btn btn-custom" target="_blank">Download App</a>
-  </div>
-
-  <!-- VPS -->
-  <div class="card p-3 text-center">
-    <div class="section-title mb-2">VPS Server File</div>
-    <p><b>50 THB / month</b></p>
-    <ul class="text-start">
-      <li>Social App များအသုံးပြုနိုင်သည်။</li>
-      <li>Video ကြည့်ရှုနိုင်သည်။</li>
-      <li>Download များပြုလုပ်နိုင်သည်။</li>
-      <li>Games ဖိုင်များဖွင့်နိုင်သည်။</li>
-      <li>မြန်နှုန်းမြင့် သုံးစွဲနိုင်သည်။</li>
-    </ul>
-    <a href="#" class="btn btn-custom">Order Now</a>
-  </div>
-</div>
+  <div class="container py-4">
+    <!-- ✅ စာလုံးအကြီး Title -->
+    <h1 class="main-title mb-5">1k2k</h1>
 <!-- 🔆 Theme Toggle Button -->
 <button id="themeToggle">🌙 အမှောင်</button>
 
@@ -194,31 +142,58 @@
     transform: scale(1.05);
   }
 </style>
+    <!-- ZIVPN App -->
+    <div class="card p-3 mb-3 text-center">
+      <div class="section-title mb-2">ZIVPN App နှင့် DTAC အရံနက် နဲတွဲသုံးရပါမယ်</div>
+      <p>1 month 1 device - 50 ဘတ် ✅<br>🌿TH Server 🇹🇭</p>
+      <p>အစမ်းသုံးနိုင်ပါတယ်</p>
+      <p class="text-danger">⚠️ မိမိနဲ့ အဆင်ပြေမှဝယ်ယူပါ ⚠️</p>
+    </div>
 
-  // Snowflakes
-  const snowContainer = document.getElementById('snow');
-  const numberOfFlakes = 50; // နှင်းဖျားအရေအတွက်
-  for(let i=0;i<numberOfFlakes;i++){
-    const flake = document.createElement('div');
-    flake.classList.add('flake');
-    flake.style.left = Math.random() * 100 + 'vw';
-    flake.style.animationDuration = (5 + Math.random() * 5) + 's';
-    flake.style.width = (5 + Math.random() * 5) + 'px';
-    flake.style.height = flake.style.width;
-    flake.style.opacity = Math.random();
-    snowContainer.appendChild(flake);
-  }
-</script>
-<footer>
+    <!-- Updated File -->
+        <div class="card p-3 mb-3 text-center">
+      <div class="section-title mb-2">အပ်ဒိတ်ထားပြီးသော ဖိုင်များ</div>
+      <p>Updated : 07-10-2025</p>
+      <a href="#" class="btn btn-custom">Download File</a>
+    </div>
+
+    <!-- ZIVPN Mod -->
+    <div class="card p-3 mb-3 text-center">
+      <div style="display: flex; justify-content: center;">
+        <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
+             alt="App Logo" 
+             style="width: 40px; height: 40px; border-radius: 20px; margin-bottom: 10px;">
+      </div>
+      <div class="section-title mb-2">ZIVPN Mod Version 2.0.7</div>
+      <p>Ads Removed ✅</p>
+      <a href="https://t.me/yourlink" class="btn btn-custom" target="_blank">Download App</a>
+    </div>
+
+    <!-- VPS -->
+    <div class="card p-3 text-center">
+      <div class="section-title mb-2">VPS Server File</div>
+      <p><b>50 THB / month</b></p>
+      <ul class="text-start">
+        <li>Social App များအသုံးပြုနိုင်သည်။</li>
+        <li>Video ကြည့်ရှုနိုင်သည်။</li>
+        <li>Download များပြုလုပ်နိုင်သည်။</li>
+        <li>Games ဖိုင်များဖွင့်နိုင်သည်။</li>
+        <li>မြန်နှုန်းမြင့် သုံးစွဲနိုင်သည်။</li>
+      </ul>
+      <a href="#" class="btn btn-custom">Order Now</a>
+    </div>
+  </div>
+<footer style="background: #ffffff; color: #000; text-align: center; padding: 15px 0; border-top: 1px solid #ddd; font-family: 'Segoe UI', sans-serif;">
   © KSOVIP<br>
   မူပိုင်-23-10-2025<br>
   <a href="#" style="color: #0d6efd; text-decoration: none; font-weight: 500; margin-right: 8px; display: inline-flex; align-items: center; gap: 5px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="18"> Facebook
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="18" style="vertical-align: middle;"> Facebook
   </a>
   |
   <a href="#" style="color: #0d6efd; text-decoration: none; font-weight: 500; margin-left: 8px; display: inline-flex; align-items: center; gap: 5px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="18"> Telegram
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="18" style="vertical-align: middle;"> Telegram
   </a>
 </footer>
+
 </body>
 </html>
