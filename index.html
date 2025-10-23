@@ -1,179 +1,145 @@
-<!doctype html>
-<html lang="my">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BLUEVPN — Example UI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KSO VPN PANEL</title>
   <style>
-    :root{
-      --blue:#2563eb;
-      --muted:#6b7280;
-      --bg1:#e0ebff;
-      --bg2:#f3f6fb;
-      --card:#ffffff;
-      --border:#e6eefc;
-      --radius:12px;
-      font-family:"Helvetica Neue", Arial, sans-serif;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6fa;
+      margin: 0;
+      padding: 0;
     }
-
-    body{
-      margin:0;
-      width:100vw;
-      height:100vh;
-      background:linear-gradient(160deg, var(--bg1), var(--bg2));
-      background-repeat:no-repeat;
-      background-attachment:fixed;
-      background-size:cover;
-      background-position:center;
-      color:#0f172a;
-      padding:18px 12px;
-      overflow-x:hidden;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
+    header {
+      background-color: #005bff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:20px;
+    .server-box {
+      background: white;
+      margin: 15px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
+    .server-title {
+      color: #005bff;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-
-    .logo{
-      width:38px;
-      height:34px;
-      background:linear-gradient(180deg,#2b6df6,#1e40af);
-      color:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      border-radius:8px;
-      box-shadow:0 4px 10px rgba(37,99,235,0.3);
+    .plan {
+      color: #00a859;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-
-    .brand h1{margin:0;font-size:20px;color:var(--blue);}
-
-    .server-title{
-      margin:20px 0;
-      background:rgba(60,130,255,0.12);
-      display:inline-block;
-      padding:10px 18px;
-      border-radius:6px;
-      font-weight:700;
-      color:#1946a8;
-      font-size:20px;
-      box-shadow:inset 0 0 6px rgba(37,99,235,0.1);
+    .config-box {
+      background: #eef2f9;
+      border-radius: 8px;
+      padding: 10px;
+      overflow-x: auto;
+      font-size: 13px;
     }
-
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 12px 36px rgba(15,23,42,0.08);
-      padding:16px;
-      border:1px solid var(--border);
-      max-width:760px;
-      width:100%;
-      margin-bottom:20px;
+    button {
+      background-color: #005bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
     }
-
-    .plan-row{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:10px;
+    button:hover {
+      background-color: #003bb3;
     }
-
-    .plan-name{font-weight:800;font-size:17px;}
-    .badge{
-      background:var(--blue);
-      color:white;
-      padding:6px 10px;
-      border-radius:6px;
-      font-weight:700;
-      font-size:13px;
+    .qr {
+      text-align: center;
+      margin-top: 15px;
     }
-
-    .section-title{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:14px;
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: 8px;
     }
-
-    textarea{
-      width:100%;
-      min-height:84px;
-      border-radius:8px;
-      border:1px solid #e6eefc;
-      padding:12px;
-      font-family:monospace;
-      background:#fbfdff;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:12px 16px;
-      border-radius:8px;
-      border:0;
-      cursor:pointer;
-      font-weight:700;
-      margin-top:8px;
-    }
-    .btn.primary{background:var(--blue);color:white;box-shadow:0 4px 12px rgba(37,99,235,0.3);}
-    .btn.ghost{background:white;border:1px solid var(--border);}
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="brand">
-      <div class="logo">B</div>
-      <h1>BLUEVPN</h1>
+
+  <header>KSO VPN PANEL</header>
+
+  <!-- AIS SERVER -->
+  <div class="server-box">
+    <div class="server-title">SG1 - AIS SERVER</div>
+    <div class="plan">🟢 3DAYS 500GB VLESS (Active)</div>
+
+    <div class="config-box" id="aisConfig">
+      vless://60b6a59c-2373-4b32-a333-c706158094a9@ais.ksovpn.online:8080?type=tcp&security=none
+    </div>
+
+    <button onclick="copyText('aisConfig')">Copy Configuration</button>
+
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=vless://60b6a59c-2373" alt="QR Code">
+      <br>
+      <button onclick="downloadQR('ais')">Download QR Code</button>
     </div>
   </div>
 
-  <div class="server-title">SG1 - AIS 64k+128k</div>
+  <!-- DTAC SERVER -->
+  <div class="server-box">
+    <div class="server-title">SG1 - DTAC SERVER</div>
+    <div class="plan">🟢 3DAYS 500GB VLESS (Active)</div>
 
-  <div class="card">
-    <div class="plan-row">
-      <div class="plan-name">3DAYS 500GB VLESS</div>
-      <div class="badge">Active</div>
+    <div class="config-box" id="dtacConfig">
+      vless://b9d8a32e-4025-4c2e-9b80-dtac-kso@dtac.ksovpn.online:443?encryption=none&type=tcp
     </div>
 
-    <div class="section-title">Configuration</div>
-    <textarea readonly>vless://065680b943@sg1.v2ray.bluevpn.onl:8080?type=tcp&encryption=none&path=%2Fbluevpn.tech&host=www.speedtest.net.onelin...</textarea>
-    <br>
-    <button class="btn primary">📋 Copy Configuration</button>
-    <button class="btn ghost">🔍 View Full</button>
+    <button onclick="copyText('dtacConfig')">Copy Configuration</button>
 
-    <div class="section-title">QR Code</div>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bluevpn.tech" alt="QR" style="border:1px solid #eee;border-radius:8px;">
-    <div style="color:#6b7280;font-size:13px;">Click to view full size</div>
-    <button class="btn ghost">⬇️ Download QR Code</button>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=vless://b9d8a32e" alt="QR Code">
+      <br>
+      <button onclick="downloadQR('dtac')">Download QR Code</button>
+    </div>
+  </div>
+
+  <!-- ZIVPN SERVER -->
+  <div class="server-box">
+    <div class="server-title">SG1 - ZIVPN SERVER</div>
+    <div class="plan">🟢 3DAYS 500GB VMESS (Active)</div>
+
+    <div class="config-box" id="zivpnConfig">
+      vmess://eyJ2IjoiMiIsInBzIjoiU0cxLVpJVlBOIiwiaG9zdCI6InppdnBuLmtzb3Zwbi5vbmxpbmUiLCJwb3J0Ijo4MDgwLCJpZCI6Ijk3NjFmOTBiLTcwNTYtNDIxNC1hMDIyLTEwNmI1Y2QzN2QwMiIsInRscyI6IiJ9
+    </div>
+
+    <button onclick="copyText('zivpnConfig')">Copy Configuration</button>
+
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=vmess://eyJ2IjoiMiIsInBzIjoiU0cxLVpJVlBOIiwiaG9zdCI6InppdnBuLmtzb3Zwbi5vbmxpbmUiLCJwb3J0Ijo4MDgwLCJpZCI6Ijk3NjFmOTBiLTcwNTYtNDIxNC1hMDIyLTEwNmI1Y2QzN2QwMiIsInRscyI6IiJ9" alt="QR Code">
+      <br>
+      <button onclick="downloadQR('zivpn')">Download QR Code</button>
+    </div>
   </div>
 
   <script>
-    // Copy configuration button
-    const copyBtn = document.querySelector('.btn.primary');
-    const config = document.querySelector('textarea');
-    copyBtn.onclick = () => {
-      navigator.clipboard.writeText(config.value);
-      copyBtn.textContent = "✅ Copied!";
-      setTimeout(() => copyBtn.textContent = "📋 Copy Configuration", 1500);
-    };
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text);
+      alert("Configuration Copied!");
+    }
 
-    // QR click to open full size
-    const qr = document.querySelector('img');
-    qr.onclick = () => window.open(qr.src, '_blank');
+    function downloadQR(name) {
+      const link = document.createElement('a');
+      link.href = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(document.getElementById(name + 'Config').innerText)}`;
+      link.download = `${name}_qr.png`;
+      link.click();
+    }
   </script>
+
 </body>
 </html>
