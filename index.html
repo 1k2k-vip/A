@@ -125,19 +125,171 @@
       <a href="#" class="btn btn-custom">Order Now</a>
     </div>
     <!--my-->
-      <div class="server-title">🇲🇲MYANMAR🇲🇲 KEY</div>
-
+     <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VMESS Configuration</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #fff;
+      width: 360px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      padding: 24px;
+    }
+    .title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+    .status {
+      background: #2563eb;
+      color: white;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin: 8px 0;
+    }
+    .label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 12px;
+    }
+    .config-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #1f2937;
+      word-wrap: break-word;
+      height: 100px;
+      overflow-y: auto;
+    }
+    .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      width: 100%;
+      transition: 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover {
+      background: #1d4ed8;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    .modal-content pre {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #1f2937;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .close-btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
   <div class="card">
-    <div class="plan-row">
-      <div class="plan-name">V2BOX VLESS KEY🔑</div>
-      <div class="badge">Active</div>
+    <div class="title"><div class="dot"></div>3DAYS 500GB VMESS</div>
+    <div class="status">Active</div>
+    <div class="label">Configuration</div>
+    <div id="config" class="config-box">
+      vmess://ewogICJ2IjogIjIiLCAgICJwcyI6ICJCTFVVRSIsICJob3N0IjogInZtZXNzLnNlcnZlci5jb20iCn0=
     </div>
-
-    <div class="section-title">Configuration</div>
-    <textarea readonly>vless://cdd5b919-c0ea-4274-a01e-fae0397fcf18@www.opensignal.com.tikvpn5.tikinternet.com:80?encryption=none&type=ws&host=Tikvpn.Speedtest.net&headerType=none&path=%252FTIK-VPN&security=none#AIS-EXP: 27-10-:2025</textarea>
-    <br>
-    <button class="btn primary">📋 Copy Configuration</button>
-    <button class="btn ghost">🔍 View Full</button></div>
+    <button class="btn" onclick="copyConfig()">📋 Copy Configuration</button>
+    <button class="btn" style="background:#10b981;" onclick="viewFull()">🔍 View Full</button>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>🔍 Full Configuration</h3>
+      <pre id="fullText"></pre>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <script>
+    function copyConfig() {
+      const configText = document.getElementById('config').innerText;
+      navigator.clipboard.writeText(configText);
+      const btn = document.querySelector('.btn');
+      btn.innerText = '✅ Copied!';
+      setTimeout(() => btn.innerText = '📋 Copy Configuration', 1500);
+    }
+    function viewFull() {
+      const modal = document.getElementById('modal');
+      const fullText = document.getElementById('config').innerText;
+      document.getElementById('fullText').innerText = fullText;
+      modal.style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
   </div> 
 </div>
 <!-- 🔆 Theme Toggle Button -->
