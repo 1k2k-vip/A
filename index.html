@@ -76,7 +76,15 @@
       text-align:center;
       box-shadow:inset 0 0 0 1px #dbeafe;
     }
-
+    .menu-close{
+      background:#f3f4f6;
+      color:#374151;
+      border:none;
+      padding:10px 12px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+    }
     .server-title{
       margin:14px 0;
       background:rgba(60,130,255,0.12);
@@ -152,8 +160,10 @@
     </button>
   </div>
 
+  <!-- ✅ Menu Panel -->
   <div id="menuPanel" class="menu-panel">
-    <a href="https://www.facebook.com/share/1DyWpipj6k/" target="_blank" class="menu-link">🌐 Facebook Page</a>
+    <a href="https://facebook.com/bluevpn.tech" target="_blank" class="menu-link">🌐 Facebook Page</a>
+    <button id="closeMenu" class="menu-close">⬅️ ပြန်ထွက်</button>
   </div>
 
   <div class="server-title">SG1 - AIS 64k+128k</div>
@@ -177,9 +187,11 @@
   </div>
 
   <script>
-    const btn=document.getElementById('menuBtn');
-    const panel=document.getElementById('menuPanel');
-    btn.onclick=()=>panel.classList.toggle('active');
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('menuPanel');
+    const closeBtn = document.getElementById('closeMenu');
+    btn.onclick = () => panel.classList.toggle('active');
+    closeBtn.onclick = () => panel.classList.remove('active');
   </script>
 </body>
 </html>
