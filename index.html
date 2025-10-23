@@ -1,398 +1,196 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Example Web UI — Template</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1k2k</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
   <style>
-    :root{
-      --bg:#f6f8fa;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#2563eb;
-      --glass: rgba(255,255,255,0.6);
-      --radius:12px;
-      --maxw:1100px;
-    }
-    [data-theme="dark"]{
-      --bg:#0f1724;
-      --card:#0b1120;
-      --muted:#93a6c0;
-      --accent:#60a5fa;
-      --glass: rgba(255,255,255,0.03);
+    /* ✅ နောက်ခံ - အမဲ+အဖြူ ပြောင်ပြောင် gradient */
+    body {
+      background: linear-gradient(145deg, #000000 0%, #222222 25%, #666666 50%, #cccccc 75%, #ffffff 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    /* Basic reset */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,var(--bg), #e9eef8 120%);
-      color: #0b1220;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      justify-content:center;
-      padding:32px;
+    /* ✅ အကြီးဆုံး title design */
+    .main-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      text-align: center;
+      background: linear-gradient(90deg, #00ffcc, #00ff66, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 255, 150, 0.7);
+      margin-top: 40px;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    /* Container */
-    .app{
-      width:100%;
-      max-width:var(--maxw);
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffaa, 0 0 30px #00ffaa;
+      }
+      to {
+        text-shadow: 0 0 25px #00ffcc, 0 0 50px #00ff99, 0 0 75px #00ff66;
+      }
     }
 
-    /* Header / Navbar */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:20px;
+    /* Glass effect card */
+    .card {
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      text-decoration:none;
-      color:inherit;
-    }
-    .logo{
-      width:52px;
-      height:52px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--accent), #7dd3fc);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:700;
-      box-shadow:0 6px 18px rgba(37,99,235,0.12);
-    }
-    nav{display:flex;gap:12px;align-items:center}
-    nav a{
-      text-decoration:none;
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:8px;
-      font-size:14px;
-    }
-    nav a:hover{color:var(--accent);background:var(--glass)}
 
-    /* Controls */
-    .controls{display:flex;gap:8px;align-items:center}
-    .btn{
-      padding:8px 12px;
-      border-radius:10px;
+    .btn-custom {
+      background: linear-gradient(90deg, #00a86b, #00cc88);
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 25px;
+      font-weight: 600;
       border: none;
-      background:var(--accent);
-      color:white;
-      cursor:pointer;
-      font-weight:600;
-      font-size:14px;
-    }
-    .btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(0,0,0,0.04)}
-    .toggle{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 8px;
-      border-radius:999px;
-      background:var(--glass);
-      cursor:pointer;
-      font-size:13px;
-      color:var(--muted);
+      transition: 0.3s;
     }
 
-    /* Hero */
-    .hero{
-      background: linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
-      padding:28px;
-      border-radius:var(--radius);
-      display:flex;
-      gap:24px;
-      align-items:center;
-      margin-bottom:18px;
-      backdrop-filter: blur(6px);
-    }
-    .hero-left{flex:1}
-    .hero h1{margin:0 0 8px 0;font-size:28px;line-height:1.05}
-    .hero p{margin:0;color:var(--muted)}
-    .search{
-      margin-top:14px;
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .search input{
-      flex:1;
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid rgba(11,17,32,0.06);
-      font-size:14px;
+    .btn-custom:hover {
+      opacity: 0.85;
     }
 
-    /* Grid */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:16px;
+    .section-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
     }
-    @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:600px){ .grid{grid-template-columns:1fr} .hero{flex-direction:column;align-items:flex-start} header{flex-direction:column;align-items:flex-start} }
 
-    .card{
-      background:var(--card);
-      padding:16px;
-      border-radius:14px;
-      box-shadow: 0 6px 18px rgba(11,17,32,0.04);
-      min-height:120px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
+    footer {
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.2);
     }
-    .card h3{margin:0;font-size:16px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-
-    /* Footer */
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* Modal */
-    .modal-backdrop{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);
-      z-index:40;
-    }
-    .modal{
-      background:var(--card);
-      padding:20px;border-radius:12px;max-width:520px;width:90%;
-      box-shadow:0 18px 40px rgba(2,6,23,0.3);
-    }
-    .modal.show{display:flex}
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .right{margin-left:auto}
-    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(0,0,0,0.04);font-size:13px}
   </style>
 </head>
 <body>
-  <div class="app" id="app">
-    <header>
-      <a class="brand" href="#" aria-label="Home">
-        <div class="logo" aria-hidden="true">UI</div>
-        <div>
-          <div style="font-weight:700">My Web UI</div>
-          <div style="font-size:12px;color:var(--muted)">A lightweight template</div>
-        </div>
-      </a>
 
-      <nav aria-label="Primary">
-        <a href="#" role="link">Dashboard</a>
-        <a href="#" role="link">Projects</a>
-        <a href="#" role="link">Settings</a>
-      </nav>
+  <div class="container py-4">
+    <!-- ✅ စာလုံးအကြီး Title -->
+    <h1 class="main-title mb-5">1k2k</h1>
+<!-- 🔆 Theme Toggle Button -->
+<button id="themeToggle">🌙 အမှောင်</button>
 
-      <div class="controls">
-        <div class="toggle" id="themeToggle" role="button" aria-pressed="false" tabindex="0">🌙 Dark</div>
-        <button class="btn ghost" id="openModal">New</button>
+<script>
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('theme');
+
+  // ပြန်ဖွင့်တာနဲ့ မပြောင်းသွားအောင် localStorage ထဲက theme ပြန်တင်
+  if (savedTheme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️ အလင်း';
+  }
+
+  btn.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      btn.textContent = '🌙 အမှောင်';
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀️ အလင်း';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #111827;
+  }
+  [data-theme="dark"] {
+    --bg: #0f172a;
+    --text: #f8fafc;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+  }
+
+  #themeToggle {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.1s;
+  }
+  #themeToggle:hover {
+    background: #1d4ed8;
+    transform: scale(1.05);
+  }
+</style>
+    <!-- ZIVPN App -->
+    <div class="card p-3 mb-3 text-center">
+      <div class="section-title mb-2">ZIVPN App နှင့် DTAC အရံနက် နဲတွဲသုံးရပါမယ်</div>
+      <p>1 month 1 device - 50 ဘတ် ✅<br>🌿TH Server 🇹🇭</p>
+      <p>အစမ်းသုံးနိုင်ပါတယ်</p>
+      <p class="text-danger">⚠️ မိမိနဲ့ အဆင်ပြေမှဝယ်ယူပါ ⚠️</p>
+    </div>
+
+    <!-- Updated File -->
+        <div class="card p-3 mb-3 text-center">
+      <div class="section-title mb-2">အပ်ဒိတ်ထားပြီးသော ဖိုင်များ</div>
+      <p>Updated : 07-10-2025</p>
+      <a href="#" class="btn btn-custom">Download File</a>
+    </div>
+
+    <!-- ZIVPN Mod -->
+    <div class="card p-3 mb-3 text-center">
+      <div style="display: flex; justify-content: center;">
+        <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/refs/heads/main/icon.png" 
+             alt="App Logo" 
+             style="width: 40px; height: 40px; border-radius: 20px; margin-bottom: 10px;">
       </div>
-    </header>
+      <div class="section-title mb-2">ZIVPN Mod Version 2.0.7</div>
+      <p>Ads Removed ✅</p>
+      <a href="https://t.me/yourlink" class="btn btn-custom" target="_blank">Download App</a>
+    </div>
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-left">
-          <h1 id="hero-title">Beautiful, usable UI — ready to customize</h1>
-          <p>Clean components, responsive grid, accessible markup. Use this as a starting point for your project.</p>
-
-          <div class="search" role="search">
-            <input id="searchInput" placeholder="Search..." aria-label="Search content" />
-            <button class="btn" id="searchBtn">Search</button>
-          </div>
-        </div>
-
-        <div style="width:260px;display:flex;flex-direction:column;gap:12px">
-          <div class="card" style="align-items:flex-start">
-            <div style="display:flex;gap:8px;align-items:center">
-              <div class="chip">v1.0</div>
-              <div class="muted" style="font-size:13px">Deploy ready</div>
-            </div>
-            <p class="muted" style="margin-top:6px">Includes light/dark theme, modal, search example, and responsive grid.</p>
-          </div>
-
-          <div class="card" style="text-align:left">
-            <h3>Quick actions</h3>
-            <div style="display:flex;gap:8px;margin-top:8px">
-              <button class="btn" id="demoAction">Demo</button>
-              <button class="btn ghost" onclick="alert('Secondary')">More</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style="margin-top:16px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-          <h2 style="margin:0">Overview</h2>
-          <div class="muted" style="font-size:13px">— Your items at a glance</div>
-          <div class="right muted" id="resultCount">0 results</div>
-        </div>
-
-        <div class="grid" id="cardsGrid" role="list">
-          <!-- cards inserted by JS -->
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      Built with ❤️ — example template • <span id="year"></span>
-    </footer>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <h3 id="modalTitle">Create new item</h3>
-      <p class="muted">Fill the form and click Create.</p>
-
-      <form id="itemForm" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
-        <label>
-          <div style="font-size:13px;margin-bottom:6px">Title</div>
-          <input name="title" required placeholder="Item title" style="padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)" />
-        </label>
-
-        <label>
-          <div style="font-size:13px;margin-bottom:6px">Description</div>
-          <textarea name="desc" placeholder="Short description" rows="3" style="padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"></textarea>
-        </label>
-
-        <div style="display:flex;gap:8px;justify-content:flex-end">
-          <button type="button" class="btn ghost" id="cancelModal">Cancel</button>
-          <button class="btn" type="submit">Create</button>
-        </div>
-      </form>
+    <!-- VPS -->
+    <div class="card p-3 text-center">
+      <div class="section-title mb-2">VPS Server File</div>
+      <p><b>50 THB / month</b></p>
+      <ul class="text-start">
+        <li>Social App များအသုံးပြုနိုင်သည်။</li>
+        <li>Video ကြည့်ရှုနိုင်သည်။</li>
+        <li>Download များပြုလုပ်နိုင်သည်။</li>
+        <li>Games ဖိုင်များဖွင့်နိုင်သည်။</li>
+        <li>မြန်နှုန်းမြင့် သုံးစွဲနိုင်သည်။</li>
+      </ul>
+      <a href="#" class="btn btn-custom">Order Now</a>
     </div>
   </div>
 
-  <script>
-    // Basic demo data + interactions
-    const app = document.getElementById('app');
-    const grid = document.getElementById('cardsGrid');
-    const resultCount = document.getElementById('resultCount');
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
+  <footer>
+    © KSOVIP<br>
+    All rights reserved.<br>
+    <a href="#" class="text-light text-decoration-none">Facebook</a> |
+    <a href="#" class="text-light text-decoration-none">Telegram</a>
+  </footer>
 
-    let items = [
-      { title: 'Design system', desc: 'A small, reusable component collection.' },
-      { title: 'Marketing site', desc: 'Landing pages and SEO-ready content.' },
-      { title: 'Admin dashboard', desc: 'Metrics, charts, and user management.' },
-      { title: 'Mobile app', desc: 'iOS & Android friendly designs.' },
-      { title: 'API backend', desc: 'Fast, secure REST endpoints.' },
-      { title: 'Testing suite', desc: 'Automated tests and CI.' }
-    ];
-
-    function renderCards(list){
-      grid.innerHTML = '';
-      if(list.length === 0){
-        grid.innerHTML = '<div style="grid-column:1/-1" class="card"><p class="muted">No items found.</p></div>';
-      } else {
-        list.forEach((it, idx) => {
-          const el = document.createElement('div');
-          el.className = 'card';
-          el.setAttribute('role','listitem');
-          el.innerHTML = `<h3>${escapeHtml(it.title)}</h3><p class="muted">${escapeHtml(it.desc)}</p>
-            <div style="margin-top:auto;display:flex;gap:8px;align-items:center">
-              <div class="muted" style="font-size:12px">#${idx+1}</div>
-              <div style="margin-left:auto"><button class="btn ghost" onclick="removeItem(${idx})">Delete</button></div>
-            </div>`;
-          grid.appendChild(el);
-        });
-      }
-      resultCount.textContent = list.length + ' results';
-    }
-
-    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-    // Remove item
-    window.removeItem = function(idx){
-      if(!confirm('Delete this item?')) return;
-      items.splice(idx,1);
-      renderCards(items);
-    }
-
-    // Search
-    document.getElementById('searchBtn').addEventListener('click', doSearch);
-    document.getElementById('searchInput').addEventListener('keydown', e => { if(e.key === 'Enter') doSearch(); });
-
-    function doSearch(){
-      const q = document.getElementById('searchInput').value.trim().toLowerCase();
-      if(!q){ renderCards(items); return; }
-      const filtered = items.filter(i => (i.title + ' ' + (i.desc||'')).toLowerCase().includes(q));
-      renderCards(filtered);
-    }
-
-    // Modal controls
-    const modal = document.getElementById('modalBackdrop');
-    const openModalBtn = document.getElementById('openModal');
-    const cancelModal = document.getElementById('cancelModal');
-    const itemForm = document.getElementById('itemForm');
-
-    openModalBtn.addEventListener('click', () => { showModal(true); });
-    cancelModal.addEventListener('click', () => { showModal(false); });
-
-    modal.addEventListener('click', (e) => {
-      if(e.target === modal) showModal(false);
-    });
-
-    function showModal(show){
-      modal.style.display = show ? 'flex' : 'none';
-      modal.setAttribute('aria-hidden', show ? 'false' : 'true');
-      document.getElementById('itemForm').reset();
-      if(show) document.querySelector('#itemForm input[name="title"]').focus();
-    }
-
-    itemForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(itemForm);
-      const title = fd.get('title').trim();
-      const desc = fd.get('desc').trim();
-      if(!title) return alert('Title required');
-      items.unshift({title, desc});
-      showModal(false);
-      renderCards(items);
-    });
-
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    // restore from localStorage
-    const saved = localStorage.getItem('ui-theme');
-    if(saved === 'dark') document.documentElement.setAttribute('data-theme','dark');
-
-    themeToggle.addEventListener('click', toggleTheme);
-    themeToggle.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') toggleTheme(); });
-
-    function toggleTheme(){
-      const current = document.documentElement.getAttribute('data-theme');
-      if(current === 'dark'){
-        document.documentElement.removeAttribute('data-theme');
-        themeToggle.textContent = '🌙 Dark';
-        themeToggle.setAttribute('aria-pressed','false');
-        localStorage.removeItem('ui-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme','dark');
-        themeToggle.textContent = '☀️ Light';
-        themeToggle.setAttribute('aria-pressed','true');
-        localStorage.setItem('ui-theme','dark');
-      }
-    }
-
-    // Demo action
-    document.getElementById('demoAction').addEventListener('click', () => {
-      alert('This is a demo action. Replace with your logic.');
-    });
-
-    // Initial render
-    renderCards(items);
-  </script>
 </body>
 </html>
