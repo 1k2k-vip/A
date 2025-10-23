@@ -95,10 +95,6 @@
 <div class="container py-4">
   <!-- ✅ စာလုံးအကြီး Title -->
   <h1 class="main-title mb-5">1k2k</h1>
-
-  <!-- 🔆 Theme Toggle Button -->
-  <button id="themeToggle">🌙 အမှောင်</button>
-
   <!-- ZIVPN App -->
   <div class="card p-3 mb-3 text-center">
     <div class="section-title mb-2">ZIVPN App နှင့် DTAC အရံနက် နဲတွဲသုံးရပါမယ်</div>
@@ -152,18 +148,65 @@
   </a>
 </footer>
 
+<!-- 🔆 Theme Toggle Button -->
+<button id="themeToggle">🌙 အမှောင်</button>
+
 <script>
-  // Theme Toggle
   const btn = document.getElementById('themeToggle');
   const root = document.documentElement;
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') { root.setAttribute('data-theme', 'dark'); btn.textContent = '☀️ အလင်း'; }
+
+  // ပြန်ဖွင့်တာနဲ့ မပြောင်းသွားအောင် localStorage ထဲက theme ပြန်တင်
+  if (savedTheme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️ အလင်း';
+  }
 
   btn.addEventListener('click', () => {
     const isDark = root.getAttribute('data-theme') === 'dark';
-    if (isDark) { root.removeAttribute('data-theme'); btn.textContent = '🌙 အမှောင်'; localStorage.setItem('theme', 'light'); }
-    else { root.setAttribute('data-theme', 'dark'); btn.textContent = '☀️ အလင်း'; localStorage.setItem('theme', 'dark'); }
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      btn.textContent = '🌙 အမှောင်';
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀️ အလင်း';
+      localStorage.setItem('theme', 'dark');
+    }
   });
+</script>
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #111827;
+  }
+  [data-theme="dark"] {
+    --bg: #0f172a;
+    --text: #f8fafc;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+  }
+
+  #themeToggle {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.1s;
+  }
+  #themeToggle:hover {
+    background: #1d4ed8;
+    transform: scale(1.05);
+  }
+</style>
 
   // Snowflakes
   const snowContainer = document.getElementById('snow');
