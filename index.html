@@ -204,7 +204,18 @@
     <button id="copyAis" class="btn btn-custom mb-2">Copy AIS</button>
   </div>
 </div>
+<script>
+  function copyText(id) {
+    const input = document.getElementById(id);
+    input.select();
+    document.execCommand("copy");
+    alert("✅  ကျေးဇူးပါ 🙏\n" + input.value.split("#")[1]);
+  }
 
+  document.getElementById("copyMm").onclick = () => copyText("mmText");
+  document.getElementById("copyDtac").onclick = () => copyText("dtacText");
+  document.getElementById("copyAis").onclick = () => copyText("aisText");
+</script>
 </body>
 </html>
 </div>  
