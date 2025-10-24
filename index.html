@@ -126,55 +126,100 @@
 </div>
  </div>
     <!--my-->
-  <!-- Myanmar -->
-    <div class="container py-3">
-  <div class="card p-3 text-center">
-      <div class="section-title mb-2" style="color: #ff0000; font-weight: bold;">
-    MYANMAR KEY🔑
-  <input type="text" id="myanmarText" value="Myanmar" readonly
-         style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
-  <button id="copyMyanmar" class="btn btn-custom mb-3">Copy Myanmar</button></div>
-</div>
- </div>
-  <!-- Dtac -->
-    <div class="container py-3">
- <div class="card p-3 text-center">
-     <div class="section-title mb-2" style="color: #ff0000; font-weight: bold;">
-    DTAC KEY🔑
-  <input type="text" id="dtacText" value="Dtac" readonly
-         style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
-  <button id="copyDtac" class="btn btn-custom mb-3">Copy Dtac</button></div>
-</div>
-    </div>
-  <!-- Ais -->
-    <div class="container py-3">
- <div class="card p-3 text-center">
-     <div class="section-title mb-2" style="color: #ff0000; font-weight: bold;">
-    AIS KEY🔑
-  <input type="text" id="aisText" value="vless://cdd5b919-c0ea-4274-a01e-fae0397fcf18@www.opensignal.com.tikvpn5.tikinternet.com:80?encryption=none&type=ws&host=Tikvpn.Speedtest.net&headerType=none&path=%252FTIK-VPN&security=none#AIS-EXP: 27-10-:2025" readonly
-         style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;">
-  <button id="copyAis" class="btn btn-custom mb-3">Copy Ais</button></div>
-</div>
- </div>
-<script>
-  function setupCopy(buttonId, inputId) {
-    const btn = document.getElementById(buttonId);
-    const input = document.getElementById(inputId);
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPN Key Copy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: "Poppins", sans-serif;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .btn-custom {
+      background: #007bff;
+      color: white;
+      border-radius: 10px;
+    }
+    .btn-custom:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
 
-    btn.addEventListener('click', () => {
-      navigator.clipboard.writeText(input.value)
-        .then(() => {
-          btn.textContent = 'Copied!';
-          setTimeout(() => btn.textContent = 'Copy ' + input.value, 1500);
-        })
-        .catch(err => console.error('Failed to copy:', err));
-    });
+<!-- Myanmar -->
+<div class="container py-3">
+  <div class="card p-3 text-center">
+    <div class="section-title mb-2" style="color: #28a745; font-weight: bold;">
+      MYANMAR KEY 🇲🇲
+    </div>
+    <input 
+      type="text" 
+      id="mmText" 
+      value="vless://11111111-aaaa-bbbb-cccc-222222222222@mm.server.com:80?type=ws&path=%2FVPN-MM&security=none#MYANMAR-EXP:27-10-2025" 
+      readonly
+      style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;"
+    >
+    <button id="copyMm" class="btn btn-custom mb-2">Copy Myanmar</button>
+  </div>
+</div>
+
+<!-- Dtac -->
+<div class="container py-3">
+  <div class="card p-3 text-center">
+    <div class="section-title mb-2" style="color: #ff6600; font-weight: bold;">
+      DTAC KEY 📶
+    </div>
+    <input 
+      type="text" 
+      id="dtacText" 
+      value="vless://abcd1234-dtac-5678-efgh-9876ijklmnop@dtac.server.com:80?type=ws&path=%2FVPN-DTAC&security=none#DTAC-EXP:27-10-2025" 
+      readonly
+      style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;"
+    >
+    <button id="copyDtac" class="btn btn-custom mb-2">Copy Dtac</button>
+  </div>
+</div>
+
+<!-- AIS -->
+<div class="container py-3">
+  <div class="card p-3 text-center">
+    <div class="section-title mb-2" style="color: #ff0000; font-weight: bold;">
+      AIS KEY 🔑
+    </div>
+    <input 
+      type="text" 
+      id="aisText" 
+      value="vless://cdd5b919-c0ea-4274-a01e-fae0397fcf18@www.opensignal.com.tikvpn5.tikinternet.com:80?encryption=none&type=ws&host=Tikvpn.Speedtest.net&headerType=none&path=%252FTIK-VPN&security=none#AIS-EXP:27-10-2025" 
+      readonly
+      style="width: 80%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; text-align: center; margin-bottom: 10px;"
+    >
+    <button id="copyAis" class="btn btn-custom mb-2">Copy AIS</button>
+  </div>
+</div>
+
+<script>
+  function copyText(id) {
+    const input = document.getElementById(id);
+    input.select();
+    document.execCommand("copy");
+    alert("✅ Copied: " + input.value.split("#")[1]);
   }
 
-  setupCopy('copyMyanmar', 'myanmarText');
-  setupCopy('copyDtac', 'dtacText');
-  setupCopy('copyAis', 'aisText');
+  document.getElementById("copyMm").onclick = () => copyText("mmText");
+  document.getElementById("copyDtac").onclick = () => copyText("dtacText");
+  document.getElementById("copyAis").onclick = () => copyText("aisText");
 </script>
+
+</body>
+</html>
 </div>  
  </div>    
 <!-- 🔆 Theme Toggle Button -->
