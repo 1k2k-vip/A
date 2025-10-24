@@ -241,6 +241,51 @@
     transform: scale(0.96);
   }
 </style>
+  <style>
+  .snowflake {
+    position: fixed;
+    top: -10px;
+    color: #fff;
+    font-size: 1em;
+    opacity: 0.9;
+    animation: fall linear infinite, sway ease-in-out infinite;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+
+  @keyframes sway {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(20px); }
+    50% { transform: translateX(-20px); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+</style>
+
+<script>
+  const snowCount = 80; // ❄ နှင်းခုပမာဏ
+  for (let i = 0; i < snowCount; i++) {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.textContent = "❄";
+    snowflake.style.left = Math.random() * 100 + "vw";
+    snowflake.style.animationDuration = (5 + Math.random() * 5) + "s, " + (3 + Math.random() * 2) + "s";
+    snowflake.style.fontSize = 8 + Math.random() * 20 + "px";
+    snowflake.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(snowflake);
+  }
+      </script>
 <footer style="background: #fafafa; color: #000; text-align: center; padding: 15px 0; border-top: 1px solid #ddd; font-family: 'Segoe UI', sans-serif;">
   © KSOVIP<br>
   မူပိုင်-23-10-2025<br>
