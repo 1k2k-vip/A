@@ -205,8 +205,6 @@
   </div>
 </div>
 <script>
-  function copyText(id) {
-    const input = document.getElementById(id);
     input.select();
     document.execCommand("copy");
     alert("✅  ကျေးဇူးပါ 🙏\n" + input.value.split("#")[1]);
