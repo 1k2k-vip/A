@@ -1,121 +1,151 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ပုံပေါ် စာသား ထည့်သွင်းခြင်း</title>
+    <title>Kasikorn Bank Card Design</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f4f4f9; padding: 20px; }
-        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); max-width: 800px; width: 100%; }
-        h1 { text-align: center; color: #333; }
-        .controls { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
-        .controls input[type="text"], .controls input[type="file"] { padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 100%; box-sizing: border-box; }
-        .controls button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
-        .controls button:hover { background-color: #0056b3; }
-        #canvasContainer { text-align: center; border: 2px dashed #ccc; padding: 10px; margin-top: 20px; }
-        #imageCanvas { border: 1px solid #333; max-width: 100%; height: auto; display: block; margin: 0 auto; }
-        .note { margin-top: 15px; color: #666; font-size: 0.9em; text-align: center; }
+        /* Global Styles for the card */
+        .kasikorn-card {
+            width: 500px; /* Adjust size as needed */
+            height: 300px; /* Adjust size as needed */
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .large-k {
+            font-size: 100px; /* Large K size */
+            color: #00A651; /* Green color */
+            font-weight: bold;
+            line-height: 0.8;
+            margin-right: 15px;
+            font-family: 'Times New Roman', Times, serif; /* Using a serif font for a script look */
+        }
+
+        .bank-name h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .bank-name p {
+            margin: 0;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .bank-name .kasikorn-english {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .small-logo {
+            width: 60px; /* Small logo size */
+            height: 60px;
+            border: 2px solid #00A651; /* Green border */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .small-logo-leaf {
+            width: 40px;
+            height: 40px;
+            background-color: #00A651;
+            border-radius: 50% 50% 0 0;
+            position: relative;
+        }
+        /* Simplification for the leaf logo - hard to replicate exactly with pure CSS */
+        .small-logo-leaf::before {
+            content: 'Y'; /* Placeholder for the leaf shape */
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: -5px;
+            left: 5px;
+            transform: rotate(180deg);
+        }
+
+        /* Body Section - Account Info */
+        .account-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .bank-code-label {
+            background-color: #00A651; /* Green block */
+            color: white;
+            padding: 8px 15px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .account-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #555;
+            letter-spacing: 2px;
+        }
+
+        /* Name Section */
+        .name-block {
+            background-color: #00A651; /* Green block */
+            color: white;
+            padding: 15px 20px;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>🖼️ ပုံပေါ်မှာ စာသား ရေးထည့်ရန်</h1>
-
-        <div class="controls">
-            <label for="imageLoader">၁။ ပုံရွေးချယ်ပါ:</label>
-            <input type="file" id="imageLoader" accept="image/*">
-
-            <label for="nameInput">၂။ အမည် ထည့်သွင်းပါ:</label>
-            <input type="text" id="nameInput" placeholder="အမည် အပြည့်အစုံ" value="အမည်">
-            
-            <label for="bankInput">၃။ ဘဏ်နံပါတ် ထည့်သွင်းပါ:</label>
-            <input type="text" id="bankInput" placeholder="ဘဏ် အကောင့်နံပါတ်" value="၁၂၃-၄၅၆-၇၈၉၀">
-            
-            <button onclick="drawTextOnCanvas()">စာသားများကို ပုံပေါ် ရေးဆွဲပါ</button>
-            <button id="downloadBtn" style="background-color: #28a745; display: none;">၄။ ပုံကို ဒေါင်းလုဒ်လုပ်ပါ</button>
+<div class="kasikorn-card">
+    <div class="card-header">
+        <div class="logo-section">
+            <span class="large-k">K</span>
+            <div class="bank-name">
+                <h3>ธนาคารกสิกรไทย</h3>
+                <p>开泰银行 <span class="kasikorn-english">KASIKORNBANK</span></p>
+            </div>
         </div>
-
-        <div id="canvasContainer">
-            <canvas id="imageCanvas"></canvas>
-            <p class="note">ပုံတစ်ပုံကို ရွေးချယ်ပြီးပါက၊ အပေါ်ရှိ ခလုတ်ကို နှိပ်၍ စာသားများကို ရေးဆွဲပါ။</p>
+        <div class="small-logo">
+            <div class="small-logo-leaf"></div>
         </div>
-        
     </div>
 
-    <script>
-        const canvas = document.getElementById('imageCanvas');
-        const ctx = canvas.getContext('2d');
-        const imageLoader = document.getElementById('imageLoader');
-        const downloadBtn = document.getElementById('downloadBtn');
-        let loadedImage = new Image();
+    <div class="account-info">
+        <div class="bank-code-label">KASIKORNTHAI</div>
+        <div class="account-number">000-000-0000</div>
+    </div>
 
-        imageLoader.addEventListener('change', handleImage, false);
-        downloadBtn.addEventListener('click', downloadImage, false);
+    <div class="name-block">
+        MR. TINT AUNG KHAING
+    </div>
+</div>
 
-        function handleImage(e) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                loadedImage.onload = function() {
-                    // Canvas အရွယ်အစားကို ပုံရဲ့အရွယ်အစားနဲ့ တူအောင် သတ်မှတ်ခြင်း
-                    canvas.width = loadedImage.width;
-                    canvas.height = loadedImage.height;
-                    
-                    // ပုံကို Canvas ပေါ်မှာ စတင်ရေးဆွဲခြင်း
-                    ctx.drawImage(loadedImage, 0, 0);
-
-                    // စာသားရေးဆွဲတဲ့ function ကို ခေါ်ပြီး ပုံကို ပြသလိုက်ပါ
-                    drawTextOnCanvas();
-                    downloadBtn.style.display = 'inline-block';
-                }
-                loadedImage.src = event.target.result;
-            }
-            reader.readAsDataURL(e.target.files[0]);
-        }
-
-        function drawTextOnCanvas() {
-            if (!loadedImage.src) {
-                alert("ကျေးဇူးပြု၍ ပုံတစ်ပုံကို ဦးစွာ ရွေးချယ်ပေးပါ။");
-                return;
-            }
-
-            // Canvas ကို ရှင်းလင်းပြီး ပုံကို ပြန်လည်ရေးဆွဲခြင်း (စာသားထပ်ရေးမဖြစ်စေရန်)
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(loadedImage, 0, 0);
-
-            const name = document.getElementById('nameInput').value;
-            const bankNumber = document.getElementById('bankInput').value;
-            
-            // စာလုံး အရွယ်အစားနှင့် ပုံစံ သတ်မှတ်ခြင်း (ပုံရဲ့အရွယ်အစားအလိုက် ပြောင်းလဲပါ)
-            const fontSize = Math.floor(canvas.height / 30); // ဥပမာ- ပုံရဲ့အမြင့်ပေါ် မူတည်ပြီး အရွယ်အစား သတ်မှတ်
-            ctx.font = `bold ${fontSize}px Arial`;
-            ctx.fillStyle = 'red'; // စာလုံးအရောင်
-
-            // အမည်ကို ရေးဆွဲခြင်း
-            // နေရာချထားခြင်း (ဥပမာ- အပေါ်ဘက် ဘယ်ဘက်ထောင့်နား)
-            let xPosName = Math.floor(canvas.width * 0.05); // ဘယ်ဘက် ၅% နေရာ
-            let yPosName = Math.floor(canvas.height * 0.10); // အပေါ်ဘက် ၁၀% နေရာ
-            ctx.fillText(`အမည်: ${name}`, xPosName, yPosName);
-
-            // ဘဏ်နံပါတ်ကို ရေးဆွဲခြင်း
-            // နေရာချထားခြင်း (အမည်ရဲ့အောက် အနည်းငယ် ချရေးရန်)
-            let xPosBank = Math.floor(canvas.width * 0.05);
-            let yPosBank = yPosName + fontSize + 15; // အမည်ရဲ့အောက် စာလုံးအရွယ်အစားနဲ့ ၁၅ pixel ခြားပြီး ရေးဆွဲ
-            ctx.fillText(`ဘဏ်နံပါတ်: ${bankNumber}`, xPosBank, yPosBank);
-        }
-
-        function downloadImage() {
-            if (!loadedImage.src) {
-                alert("ကျေးဇူးပြု၍ ပုံကို ရွေးချယ်ပြီး စာသားများ ရေးဆွဲထားပါ။");
-                return;
-            }
-            // Canvas ကို PNG ပုံအဖြစ် ပြောင်းပြီး ဒေါင်းလုဒ်လုပ်ခြင်း
-            const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            const link = document.createElement('a');
-            link.download = 'edited_image.png';
-            link.href = image;
-            link.click();
-        }
-    </script>
 </body>
 </html>
