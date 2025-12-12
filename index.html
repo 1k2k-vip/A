@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mockup UI Example</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <title>Wallpaper Mockuper</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
-        <h3 class="title">🎉ပို့စ်တင်ရန်အတွက် Mockup ပုံကို အောက်ပါနည်းလမ်းဖြင့် ပြုလုပ်ပြီး စေခိုင်းထားပါသည်။</h3>
-        
-        <div class="upload-area">
-            <p>ပုံကို ဤနေရာသို့ ဆွဲထည့်ပါ သို့မဟုတ် ရွေးချယ်ပါ (PNG သို့မဟုတ် JPG)</p>
+        <h2>📱 ကိုယ်တိုင် ဖန်တီး Wallaper Mockuper</h2>
+
+        <div class="upload-section">
+            <div class="upload-area" id="dropArea">
+                ပုံကို ဤနေရာသို့ ဆွဲထည့်ပါ သို့မဟုတ် <input type="file" id="imageUpload" accept="image/png, image/jpeg"> ရွေးချယ်ပါ
+            </div>
+            <p class="file-info" id="fileInfo">ဖိုင်ရွေးချယ်ထားခြင်းမရှိသေးပါ</p>
         </div>
 
         <div class="mockup-section">
-            <h2 class="mockup-title">ထုတ်လုပ်ပြီးသော Mockup</h2>
-            <span class="close-btn">❌</span>
-            
+            <h3>ထုတ်လုပ်ပြီးသော Mockup</h3>
             <div class="phone-frame">
-                <img src="your_screenshot_image.jpg" alt="Home Screen Mockup" class="inner-screen">
+                <img id="mockupImage" src="placeholder.png" alt="Phone Wallpaper Mockup" class="inner-screen">
             </div>
+            <a href="#" id="downloadLink" download="my-wallpaper-mockup.png" class="download-link">
+                <button class="download-button">
+                    ⬇️ ပုံကို ဒေါင်းလုဒ်လုပ်ရန်
+                </button>
+            </a>
         </div>
-        
-        <a href="your_screenshot_image.jpg" download="mockup_image.jpg" class="download-link">
-            <button class="download-button">
-                ⬇️ပုံကို ဒေါင်းလုဒ်လုပ်ရန်
-            </button>
-        </a>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
