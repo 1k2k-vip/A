@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallpaper Mockuper</title>
+    <title>Simple Wallpaper Tool</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
-        <h2>📱 ကိုယ်တိုင် ဖန်တီး Wallaper Mockuper</h2>
+        <h2>🖼️ Wallpaper ပုံစံချရန်</h2>
 
         <div class="upload-section">
             <div class="upload-area" id="dropArea">
@@ -17,14 +17,18 @@
             <p class="file-info" id="fileInfo">ဖိုင်ရွေးချယ်ထားခြင်းမရှိသေးပါ</p>
         </div>
 
-        <div class="mockup-section">
-            <h3>ထုတ်လုပ်ပြီးသော Mockup</h3>
-            <div class="phone-frame">
-                <img id="mockupImage" src="placeholder.png" alt="Phone Wallpaper Mockup" class="inner-screen">
-            </div>
-            <a href="#" id="downloadLink" download="my-wallpaper-mockup.png" class="download-link">
-                <button class="download-button">
-                    ⬇️ ပုံကို ဒေါင်းလုဒ်လုပ်ရန်
+        <div class="image-display-section">
+            <img id="displayImage" src="placeholder.png" alt="Uploaded Image" class="uploaded-image">
+        </div>
+        
+        <div class="button-group">
+             <button class="action-button set-wallpaper-btn" disabled>
+                Wallpaper အဖြစ်ထားပါ (ဒေါင်းလုဒ်လုပ်ပြီးမှ ထားပါ)
+            </button>
+            
+            <a href="#" id="downloadLink" download="my-wallpaper.png" class="download-link">
+                <button class="action-button save-btn">
+                    ⬇️ ပုံကို သိမ်းဆည်းပါ (Download)
                 </button>
             </a>
         </div>
