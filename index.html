@@ -3,242 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Bank Card Maker Clone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Base Styles */
-        body { 
-            font-family: Arial, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            background-color: #e6f7ff; /* အပြာနုရောင် နောက်ခံ */
-            padding: 20px; 
-            min-height: 100vh;
-            margin: 0;
-        }
-        .app-container { 
-            background: white; 
-            padding: 20px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-            max-width: 450px; 
-            width: 100%; 
-        }
-        
-        h1 { 
-            text-align: center; 
-            color: #00A651; 
-            font-size: 20px;
-            margin-top: 10px;
-            margin-bottom: 25px;
-        }
-        h1 i { margin-right: 8px; }
-
-        /* ------------------ KASIKORNBANK CARD CSS ------------------ */
-        .card-preview {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            background-color: white;
-            transform: scale(0.85); /* ဖုန်းထဲမှာ မြင်ရတဲ့အတိုင်း အရွယ်အစား ချုံ့ရန် */
-            transform-origin: top center;
-            width: 100%; /* Scaling after */
-            box-sizing: border-box;
-        }
-        
-        /* Inner Card Elements (Adapted from previous code) */
-        .kasikorn-card-inner {
-            width: 100%; /* Adjusted for preview scale */
-            height: auto;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Scaled Fonts and Elements */
-        .card-header { margin-bottom: 20px; }
-        .large-k { font-size: 100px; margin-right: 10px; }
-        .bank-name h3 { font-size: 24px; }
-        .bank-name p { font-size: 14px; }
-        .small-logo { width: 50px; height: 50px; border: 2px solid #00A651; }
-        .account-info { margin-bottom: 15px; }
-        .bank-code-label { padding: 5px 10px; font-size: 14px; margin-right: 15px; }
-        #accountNumberDisplay { font-size: 20px; letter-spacing: 1.5px; }
-        #nameDisplay { 
-            padding: 10px 15px; font-size: 20px; letter-spacing: 1px; min-height: 20px; 
-            /* အလယ် ဗဟို ချိန်ညှိမှုများ */
-            display: flex; justify-content: center; align-items: center; text-align: center;
-        }
-        
-        /* ------------------ Input Controls CSS ------------------ */
-        .controls { 
-            display: flex; flex-direction: column; gap: 15px; 
-            padding: 0; 
-        }
-        .controls label {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: -5px;
-        }
-
-        /* Custom Input Styling */
-        .custom-input {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 10px;
-            transition: border-color 0.3s;
-        }
-        /* Focus/Active state (Green border) */
-        .custom-input.active {
-            border-color: #00A651; /* Green focus/active border */
-        }
-
-        .custom-input i {
-            color: #aaa;
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        .custom-input input {
-            border: none;
-            padding: 0;
-            width: 100%;
-            background-color: transparent;
-            font-size: 16px;
-        }
-        .custom-input input:focus {
-            outline: none;
-        }
-
-        /* Download Button (Green, Full Width) */
-        #downloadBtn {
-            background-color: #00A651; /* Green */
-            color: white;
-            padding: 15px 15px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        #downloadBtn:hover {
-            background-color: #008f44;
-        }
-        #downloadBtn i {
-            margin-right: 10px;
-        }
-        /* Hidden draw button to update the canvas */
-        #drawButton { display: none; }
-    </style>
+    <title>Mockup UI Example</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-
     <div class="app-container">
-        <h1><i class="fas fa-wallet"></i> K-Bank Card Maker</h1>
+        <h3 class="title">🎉ပို့စ်တင်ရန်အတွက် Mockup ပုံကို အောက်ပါနည်းလမ်းဖြင့် ပြုလုပ်ပြီး စေခိုင်းထားပါသည်။</h3>
+        
+        <div class="upload-area">
+            <p>ပုံကို ဤနေရာသို့ ဆွဲထည့်ပါ သို့မဟုတ် ရွေးချယ်ပါ (PNG သို့မဟုတ် JPG)</p>
+        </div>
 
-        <div id="cardDisplay">
-            <div class="card-preview">
-                <div class="kasikorn-card-inner" id="cardToSave">
-                    <div class="card-header">
-                        <div class="logo-section">
-                            <span class="large-k">K</span>
-                            <div class="bank-name">
-                                <h3>ธนาคารกสิกรไทย</h3>
-                                <p>开泰银行 <span class="kasikorn-english">KASIKORNBANK</span></p>
-                            </div>
-                        </div>
-                        <div class="small-logo">
-                            <div style="width: 25px; height: 25px; background-color: #00A651; border-radius: 50%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="account-info">
-                        <div class="bank-code-label">KASIKORNTHAI</div>
-                        <div id="accountNumberDisplay">000-000-0000</div> 
-                    </div>
-
-                    <div id="nameDisplay">
-                        MR. TINT AUNG KHAING
-                    </div>
-                </div>
+        <div class="mockup-section">
+            <h2 class="mockup-title">ထုတ်လုပ်ပြီးသော Mockup</h2>
+            <span class="close-btn">❌</span>
+            
+            <div class="phone-frame">
+                <img src="your_screenshot_image.jpg" alt="Home Screen Mockup" class="inner-screen">
             </div>
         </div>
         
-        <div class="controls">
-            <label for="nameInput">Name (အမည်)</label>
-            <div class="custom-input" id="nameInputGroup">
-                <i class="fas fa-user"></i>
-                <input type="text" id="nameInput" placeholder="MR. TINT AUNG KHAING" value="MR. TINT AUNG KHAING" oninput="updateCardDetails()">
-            </div>
-            
-            <label for="bankInput">Account No (နံပါတ်)</label>
-            <div class="custom-input" id="bankInputGroup">
-                <i class="fas fa-credit-card"></i>
-                <input type="text" id="bankInput" placeholder="000-000-0000" value="000-000-0000" oninput="updateCardDetails()">
-            </div>
-            
-            <button id="downloadBtn" onclick="saveAsImage()"><i class="fas fa-download"></i> Download Image</button>
-        </div>
-        
+        <a href="your_screenshot_image.jpg" download="mockup_image.jpg" class="download-link">
+            <button class="download-button">
+                ⬇️ပုံကို ဒေါင်းလုဒ်လုပ်ရန်
+            </button>
+        </a>
     </div>
-
-    <canvas id="hiddenCanvas" style="display: none;"></canvas>
-
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-
-    <script>
-        // Update Card Details based on Input
-        function updateCardDetails() {
-            const nameInput = document.getElementById('nameInput').value.toUpperCase();
-            const bankInput = document.getElementById('bankInput').value;
-
-            document.getElementById('nameDisplay').textContent = nameInput || 'MR. NAME HERE';
-            document.getElementById('accountNumberDisplay').textContent = bankInput || '000-000-0000';
-        }
-
-        // Save as Image (Using HTML2Canvas)
-        function saveAsImage() {
-            const cardElement = document.getElementById('cardToSave');
-            
-            // Set scale to generate high resolution image
-            html2canvas(cardElement, {
-                scale: 3, 
-                allowTaint: true,
-                useCORS: true,
-                // Use the hidden canvas to avoid rendering issue
-                canvas: document.getElementById('hiddenCanvas') 
-            }).then(canvas => {
-                const image = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.download = 'k-bank_card_maker.png';
-                link.href = image;
-                link.click();
-            }).catch(err => {
-                alert("ပုံအဖြစ် သိမ်းဆည်းရာတွင် အမှားအယွင်း ဖြစ်ပွားပါသည်။");
-                console.error(err);
-            });
-        }
-        
-        // Input Focus Visual Feedback (Adding green border when active)
-        document.addEventListener('DOMContentLoaded', () => {
-             updateCardDetails(); // Initial load
-             
-             const nameInput = document.getElementById('nameInput');
-             const bankInput = document.getElementById('bankInput');
-
-             const nameGroup = document.getElementById('nameInputGroup');
-             const bankGroup = document.getElementById('bankInputGroup');
-
-             nameInput.addEventListener('focus', () => nameGroup.classList.add('active'));
-             nameInput.addEventListener('blur', () => nameGroup.classList.remove('active'));
-             
-             bankInput.addEventListener('focus', () => bankGroup.classList.add('active'));
-             bankInput.addEventListener('blur', () => bankGroup.classList.remove('active'));
-        });
-    </script>
 </body>
 </html>
