@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Wallpaper Tool</title>
+    <title>Phone Wallpaper Mockuper</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
-        <h2>🖼️ Wallpaper ပုံစံချရန်</h2>
+        <h2>📱 ဖုန်းနောက်ခံပုံ Mockup ဖန်တီးပါ</h2>
 
-        <div class="upload-section">
-            <div class="upload-area" id="dropArea">
-                ပုံကို ဤနေရာသို့ ဆွဲထည့်ပါ သို့မဟုတ် <input type="file" id="imageUpload" accept="image/png, image/jpeg"> ရွေးချယ်ပါ
-            </div>
-            <p class="file-info" id="fileInfo">ဖိုင်ရွေးချယ်ထားခြင်းမရှိသေးပါ</p>
-        </div>
-
-        <div class="image-display-section">
-            <img id="displayImage" src="placeholder.png" alt="Uploaded Image" class="uploaded-image">
+        <div class="upload-area">
+            ပုံကို ဤနေရာသို့ ဆွဲထည့်ပါ သို့မဟုတ် <input type="file" id="imageUpload" accept="image/png, image/jpeg"> ရွေးချယ်ပါ
         </div>
         
-        <div class="button-group">
-             <button class="action-button set-wallpaper-btn" disabled>
-                Wallpaper အဖြစ်ထားပါ (ဒေါင်းလုဒ်လုပ်ပြီးမှ ထားပါ)
-            </button>
+        <div class="mockup-section">
+            <h3>ဖုန်းမျက်နှာပြင် Mockup</h3>
             
-            <a href="#" id="downloadLink" download="my-wallpaper.png" class="download-link">
-                <button class="action-button save-btn">
-                    ⬇️ ပုံကို သိမ်းဆည်းပါ (Download)
+            <div class="phone-frame">
+                <div id="wallpaperScreen" class="inner-screen">
+                    </div>
+            </div>
+            
+            <a href="#" id="downloadLink" download="wallpaper-mockup.png" class="download-link" style="display:none;">
+                <button class="download-button">
+                    ⬇️ Mockup ပုံကို ဒေါင်းလုဒ်လုပ်ရန်
                 </button>
             </a>
+            
+            <button id="generateMockupBtn" class="download-button" style="margin-top:20px;">
+                 Mockup ပုံထုတ်ယူရန်
+            </button>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
