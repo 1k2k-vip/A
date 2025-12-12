@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="my">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>အလယ်တည့်တည့် ချိန်ညှိထားသော ကတ်ဒီဇိုင်း</title>
+    <title>MR. မဖျက်နိုင်သော ဒီဇိုင်း</title>
     <style>
         /* CSS Styles */
         body { 
@@ -23,114 +22,80 @@
             max-width: 1050px; 
             width: 100%; 
         }
-        h1 { 
-            text-align: center; 
-            color: #333; 
-        }
+        h1 { text-align: center; color: #333; }
         
         /* ------------------ KASIKORNBANK CARD CSS (996x660) ------------------ */
         .kasikorn-card {
-            width: 996px; /* အနံ (Width) - 996px */
-            height: 660px; /* အမြင့် (Height) - 660px */
-            background-color: white;
-            border: 1px solid #ccc;
+            width: 996px; height: 660px; 
+            background-color: white; border: 1px solid #ccc;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 40px; 
-            box-sizing: border-box;
-            position: relative;
+            padding: 40px; box-sizing: border-box; position: relative;
         }
         
         /* Header Logo (ယခင်အတိုင်း) */
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 60px; 
-        }
-        .logo-section {
-            display: flex;
-            align-items: center;
-        }
-        .large-k {
-            font-size: 200px; 
-            color: #00A651; 
-            font-weight: bold;
-            line-height: 0.8;
-            margin-right: 30px; 
-            font-family: 'Times New Roman', Times, serif;
-        }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
+        .logo-section { display: flex; align-items: center; }
+        .large-k { font-size: 200px; color: #00A651; font-weight: bold; line-height: 0.8; margin-right: 30px; font-family: 'Times New Roman', Times, serif; }
         .bank-name h3 { margin: 0; font-size: 48px; color: #333; font-weight: normal; } 
         .bank-name p { margin: 0; font-size: 28px; color: #777; } 
-        .bank-name .kasikorn-english { font-weight: bold; color: #333; }
-        
-        .small-logo { 
-            width: 120px; 
-            height: 120px; 
-            border: 4px solid #00A651; 
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .small-logo > div {
-            width: 80px; 
-            height: 80px;
-            background-color: #00A651;
-            border-radius: 50%;
-        }
+        .small-logo { width: 120px; height: 120px; border: 4px solid #00A651; border-radius: 50%; background-color: white; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .small-logo > div { width: 80px; height: 80px; background-color: #00A651; border-radius: 50%; }
 
         /* Account Info Section */
-        .account-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 50px; 
-        }
-        .bank-code-label {
-            background-color: #00A651;
-            color: white;
-            padding: 16px 30px; 
-            font-size: 40px; 
-            font-weight: bold;
-            margin-right: 40px;
-        }
+        .account-info { display: flex; align-items: stretch; margin-bottom: 50px; }
+        .bank-code-label { background-color: #00A651; color: white; padding: 16px 30px; font-size: 40px; font-weight: bold; margin-right: 40px; display: flex; align-items: center; }
         #accountNumberDisplay { 
-            font-size: 60px; 
-            font-weight: bold;
-            color: #555;
-            letter-spacing: 4px;
-            /* ပြင်ဆင်ချက်- စာသားကို အလယ်ချခြင်း */
-            flex-grow: 1; /* ကျန်နေရာအားလုံးကို ယူစေခြင်း */
-            text-align: center; /* စာသားကို အလယ်ချခြင်း */
+            font-size: 60px; font-weight: bold; color: #555; letter-spacing: 4px;
+            flex-grow: 1; display: flex; justify-content: center; align-items: center;
         }
 
         /* Name Section */
         #nameDisplay { 
-            background-color: #00A651;
-            color: white;
-            padding: 30px 40px; 
-            font-size: 60px; 
-            font-weight: bold;
-            letter-spacing: 2px;
-            min-height: 60px;
-            /* ပြင်ဆင်ချက်- စာသားကို အလယ်ချခြင်း */
-            text-align: center; 
+            background-color: #00A651; color: white; padding: 30px 40px; 
+            font-size: 60px; font-weight: bold; letter-spacing: 2px; min-height: 60px;
+            display: flex; justify-content: center; align-items: center; 
         }
         
-        /* Controls Styles (ယခင်အတိုင်း) */
+        /* ------------------ Controls Section ------------------ */
         .controls { display: flex; flex-direction: column; gap: 15px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
-        .controls input[type="text"] { padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 100%; box-sizing: border-box; }
         .controls button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; }
         .controls button:hover { background-color: #0056b3; }
         #downloadBtn { background-color: #28a745; }
-        #downloadBtn:hover { background-color: #1e7e34; }
+        
+        /* *** NEW CSS for Read-Only MR. *** */
+        .name-input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 0 10px; /* input ကို အတွင်းမှသာ padding ပေးရန် */
+            background-color: white;
+        }
+        .name-input-group .prefix-text {
+            font-weight: bold;
+            color: #555;
+            margin-right: 5px;
+            user-select: none; /* စာသားကို ရွေးချယ်လို့ မရအောင် */
+            background-color: #f0f0f0; /* MR. အတွက် နောက်ခံအရောင် */
+            padding: 8px 5px;
+            border-radius: 3px;
+        }
+        .name-input-group input[type="text"] {
+            border: none;
+            padding: 10px 0; /* Input အတွင်းပိုင်း padding */
+            width: 100%;
+            background-color: transparent;
+            font-size: 16px;
+        }
+        .name-input-group input[type="text"]:focus {
+            outline: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>↔️ အလယ်တည့်တည့် ချိန်ညှိထားသော ကတ်ဒီဇိုင်း</h1>
+        <h1>🔒 MR. မဖျက်နိုင်သော ကတ်ဒီဇိုင်း</h1>
 
         <div id="cardDisplay">
             <div class="kasikorn-card" id="cardToSave">
@@ -160,7 +125,11 @@
         
         <div class="controls">
             <label for="nameInput">၁။ **အမည် ထည့်သွင်းပါ (MR. ကို ဖျက်မရ):**</label>
-            <input type="text" id="nameInput" placeholder="အမည် အပြည့်အစုံ" value="MR. TINT AUNG KHAING" oninput="updateCardDetails()">
+            
+            <div class="name-input-group">
+                <span id="mrPrefix" class="prefix-text">MR. </span> 
+                <input type="text" id="nameInput" placeholder="အမည် အပြည့်အစုံ" value="TINT AUNG KHAING" oninput="updateCardDetails()">
+            </div>
             
             <label for="bankInput">၂။ **ဘဏ်နံပါတ် ထည့်သွင်းပါ:**</label>
             <input type="text" id="bankInput" placeholder="ဘဏ် အကောင့်နံပါတ်" value="000-000-0000" oninput="updateCardDetails()">
@@ -178,48 +147,4 @@
         // စာသား အပြောင်းအလဲရှိတိုင်း ကတ်ပေါ်တွင် ချက်ချင်းပြသပေးခြင်း
         function updateCardDetails() {
             const nameInputEl = document.getElementById('nameInput');
-            let nameValue = nameInputEl.value;
-            
-            // MR. ကို ဖျက်လို့မရအောင် စစ်ဆေးခြင်း
-            if (!nameValue.startsWith(PREFIX)) {
-                nameInputEl.value = PREFIX + nameValue.replace(PREFIX, '');
-            }
-
-            const finalName = nameInputEl.value.toUpperCase();
-            const bankInput = document.getElementById('bankInput').value;
-
-            document.getElementById('nameDisplay').textContent = finalName || PREFIX;
-            document.getElementById('accountNumberDisplay').textContent = bankInput || '000-000-0000';
-        }
-
-        // ကတ်ကို ပုံအဖြစ် သိမ်းဆည်းရန် function 
-        function saveAsImage() {
-            const cardElement = document.getElementById('cardToSave');
-            
-            html2canvas(cardElement, {
-                scale: 2, 
-                allowTaint: true,
-                useCORS: true
-            }).then(canvas => {
-                const image = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.download = 'bank_card_centered_996x660.png';
-                link.href = image;
-                link.click();
-            }).catch(err => {
-                alert("ပုံအဖြစ် သိမ်းဆည်းရာတွင် အမှားအယွင်း ဖြစ်ပွားပါသည်။");
-                console.error(err);
-            });
-        }
-        
-        // စတင်ချိန်တွင် ကတ်အချက်အလက်များနှင့် MR. ကို သတ်မှတ်ခြင်း
-        document.addEventListener('DOMContentLoaded', () => {
-             const nameInputEl = document.getElementById('nameInput');
-             if (!nameInputEl.value.startsWith(PREFIX)) {
-                nameInputEl.value = PREFIX + nameInputEl.value;
-             }
-             updateCardDetails();
-        });
-    </script>
-</body>
-</html>
+            const bankInput = document
