@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="my">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasikorn Bank Card Design</title>
     <style>
-        /* Global Styles for the card */
+        /* CSS Styles */
         .kasikorn-card {
-            width: 500px; /* Adjust size as needed */
-            height: 300px; /* Adjust size as needed */
+            width: 500px; /* Card Width */
+            height: 300px; /* Card Height */
             background-color: white;
             border: 1px solid #ccc;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -17,7 +17,7 @@
             box-sizing: border-box;
         }
 
-        /* Header Section */
+        /* Header Section Styles */
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -31,12 +31,12 @@
         }
 
         .large-k {
-            font-size: 100px; /* Large K size */
-            color: #00A651; /* Green color */
+            font-size: 100px;
+            color: #00A651;
             font-weight: bold;
             line-height: 0.8;
             margin-right: 15px;
-            font-family: 'Times New Roman', Times, serif; /* Using a serif font for a script look */
+            font-family: 'Times New Roman', Times, serif;
         }
 
         .bank-name h3 {
@@ -58,9 +58,9 @@
         }
 
         .small-logo {
-            width: 60px; /* Small logo size */
+            width: 60px;
             height: 60px;
-            border: 2px solid #00A651; /* Green border */
+            border: 2px solid #00A651;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -69,6 +69,7 @@
             padding: 5px;
         }
 
+        /* Simplified Logo Representation */
         .small-logo-leaf {
             width: 40px;
             height: 40px;
@@ -76,18 +77,8 @@
             border-radius: 50% 50% 0 0;
             position: relative;
         }
-        /* Simplification for the leaf logo - hard to replicate exactly with pure CSS */
-        .small-logo-leaf::before {
-            content: 'Y'; /* Placeholder for the leaf shape */
-            color: white;
-            font-size: 30px;
-            position: absolute;
-            top: -5px;
-            left: 5px;
-            transform: rotate(180deg);
-        }
 
-        /* Body Section - Account Info */
+        /* Body Section - Data Swapped */
         .account-info {
             display: flex;
             align-items: center;
@@ -95,7 +86,7 @@
         }
 
         .bank-code-label {
-            background-color: #00A651; /* Green block */
+            background-color: #00A651;
             color: white;
             padding: 8px 15px;
             font-size: 20px;
@@ -104,18 +95,20 @@
         }
 
         .account-number {
-            font-size: 30px;
+            /* ဤနေရာသည် မူလက ဘဏ်နံပါတ်နေရာဖြစ်သော်လည်း ယခုအခါ 'နာမည်' ကို ထည့်ရန် */
+            font-size: 30px; 
             font-weight: bold;
             color: #555;
             letter-spacing: 2px;
         }
 
-        /* Name Section */
+        /* Name Section - Data Swapped */
         .name-block {
-            background-color: #00A651; /* Green block */
+            background-color: #00A651;
             color: white;
             padding: 15px 20px;
-            font-size: 30px;
+            /* ဤနေရာသည် မူလက နာမည်နေရာဖြစ်သော်လည်း ယခုအခါ 'ဘဏ်နံပါတ်' ကို ထည့်ရန် */
+            font-size: 30px; 
             font-weight: bold;
             letter-spacing: 1px;
         }
@@ -139,11 +132,11 @@
 
     <div class="account-info">
         <div class="bank-code-label">KASIKORNTHAI</div>
-        <div class="account-number">000-000-0000</div>
+        <div class="account-number">သင်၏ နာမည်ကို ဤနေရာတွင် ထည့်ပါ</div> 
     </div>
 
     <div class="name-block">
-        MR. TINT AUNG KHAING
+        သင်၏ ဘဏ်နံပါတ်ကို ဤနေရာတွင် ထည့်ပါ (ဥပမာ: 1234567890)
     </div>
 </div>
 
