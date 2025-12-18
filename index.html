@@ -3,115 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSO VIP - VPN Download</title>
+    <title>KSO VIP - All Network Packages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(180deg, #3a7bd5, #00d2ff); /* အပြာရောင် Gradient */
-            height: 100vh;
+            padding: 20px 0;
+            font-family: 'Segoe UI', 'Pyidaungsu', sans-serif;
+            background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            overflow: hidden;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 25px;
             text-align: center;
-            width: 350px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
+            width: 360px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
-        /* (၁) လိုဂိုပုံ */
         .main-logo {
-            width: 120px;
-            height: 120px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
-            border: 3px solid #ff416c; /* လိုဂိုအရောင်နဲ့ လိုက်ဖက်အောင် အနီလိုင်းထည့်ထားသည် */
-            margin-bottom: 15px;
-            object-fit: cover;
+            border: 3px solid #ff416c;
+            margin-bottom: 5px;
         }
 
         .logo-name {
-            font-size: 2.2em;
+            font-size: 1.8em;
             font-weight: bold;
-            margin: 10px 0;
-            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #00d2ff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .description {
-            font-size: 0.9em;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        /* (၂၊ ၃၊ ၄) TRUE, AIS, DTAC ခလုတ်များ */
-        .operator-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .op-box {
-            background: white;
-            color: #333;
-            padding: 8px 12px;
+        /* --- Package Styling --- */
+        .package-title {
+            color: white;
+            padding: 6px 12px;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 0.8em;
+            margin: 15px 0 8px 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            min-width: 60px;
+            font-size: 0.9em;
         }
 
-        .op-box.true { color: #ff0000; }
-        .op-box.ais { color: #00b300; }
-        .op-box.dtac { color: #00aaff; }
+        .bg-true { background: #ed1c24; }
+        .bg-dtac { background: #00aaff; }
+        .bg-ais { background: #94c11f; } /* AIS Green */
 
-        /* (၅) Download ခလုတ် */
+        .package-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .package-item {
+            background: white;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .package-item:active {
+            transform: scale(0.95);
+            background: #e0e0e0;
+        }
+
+        .code { font-weight: bold; color: #222; font-size: 1em; }
+        .price { font-weight: bold; color: #444; font-size: 0.9em; }
+
+        /* --- Action Buttons --- */
         .download-btn {
-            background: #0052D4;
-            background: linear-gradient(to right, #6fb1fc, #4364f7, #0052D4);
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            padding: 15px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: block;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 25px 0 10px 0;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
         }
 
-        .download-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* (၆) Message လိုဂို */
         .msg-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #0084FF; /* Messenger Blue */
-            width: 55px;
-            height: 55px;
+            background: #0084FF;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
             text-decoration: none;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
@@ -119,24 +123,50 @@
 
     <div class="card">
         <img src="https://r2.erweima.ai/i/0_4228965902172772714.png" class="main-logo" alt="KSO Logo">
-        
-        <div class="logo-name">KSO</div>
-        <p class="description">VPN ဝန်ဆောင်မှုကို အမြန်နှုန်းအမြင့်ဆုံးဖြင့် <br> အသုံးပြုနိုင်ပါသည်။</p>
+        <div class="logo-name">KSO VIP</div>
 
-        <div class="operator-group">
-            <div class="op-box true">TRUE</div>
-            <div class="op-box ais">AIS</div>
-            <div class="op-box dtac">DTAC</div>
+        <div class="package-title bg-true"><i class="fas fa-sim-card"></i>&nbsp; TRUE PACKAGES</div>
+        <div class="package-list">
+            <a href="tel:*900*3507#" class="package-item">
+                <span class="code">*900*3507#</span> <span class="price">1ရက် 6ဘတ်</span>
+            </a>
+            <a href="tel:*900*3508#" class="package-item">
+                <span class="code">*900*3508#</span> <span class="price">7ရက် 21ဘတ်</span>
+            </a>
+            <a href="tel:*900*3509#" class="package-item">
+                <span class="code">*900*3509#</span> <span class="price">30ရက် 53ဘတ်</span>
+            </a>
         </div>
 
-        <a href="သင့်ရဲ့_APK_Link_ဒီမှာထည့်ပါ" class="download-btn">
-            <i class="fas fa-download"></i> Download App
+        <div class="package-title bg-dtac"><i class="fas fa-sim-card"></i>&nbsp; DTAC PACKAGES</div>
+        <div class="package-list">
+            <a href="tel:*177*15#" class="package-item">
+                <span class="code">*177*15#</span> <span class="price">15ရက် 15ဘတ်</span>
+            </a>
+            <a href="tel:*177*30#" class="package-item">
+                <span class="code">*177*30#</span> <span class="price">30ရက် 30ဘတ်</span>
+            </a>
+        </div>
+
+        <div class="package-title bg-ais"><i class="fas fa-sim-card"></i>&nbsp; AIS PACKAGES</div>
+        <div class="package-list">
+            <a href="tel:*777*7067#" class="package-item">
+                <span class="code">*777*7067#</span> <span class="price">30ရက် 30ဘတ်</span>
+            </a>
+            <a href="tel:*777*7068#" class="package-item">
+                <span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span>
+            </a>
+        </div>
+
+        <a href="YOUR_APK_LINK_HERE" class="download-btn">
+            <i class="fas fa-download"></i> Download APK
         </a>
     </div>
 
-    <a href="https://m.me/ကိုယ့်Pageနာမည်" class="msg-btn">
+    <a href="https://m.me/YOUR_PAGE_ID" class="msg-btn">
         <i class="fab fa-facebook-messenger"></i>
     </a>
 
 </body>
 </html>
+
