@@ -3,41 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivo Y72 5G Wallpaper Mockup Tool</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>KSO Download Page</title>
+    <style>
+        /* အခြေခံ ဒီဇိုင်းသတ်မှတ်ချက်များ (CSS) */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* နောက်ခံအရောင် */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* ကတ်ပြားဒီဇိုင်း (Card UI) */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* KSO ခေါင်းစဉ် (Logo Name) */
+        .logo-name {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #ffffff;
+        }
+
+        /* စာတန်း (Description Text) */
+        .description {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Download ခလုတ်ဒီဇိုင်း */
+        .download-btn {
+            background-color: #00d2ff;
+            background-image: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        /* ခလုတ်ကို mouse တင်လိုက်ရင် ဖြစ်မည့်ပုံစံ */
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <h2 class="app-header">📱 Vivo Y72 5G Mockup</h2>
 
-        <div class="upload-area">
-            နောက်ခံပုံ (Wallpaper) ကို ဤနေရာသို့ ဆွဲထည့်ပါ သို့မဟုတ် <input type="file" id="imageUpload" accept="image/png, image/jpeg"> ရွေးချယ်ပါ
-            <p>(PNG သို့မဟုတ် JPG)</p>
-        </div>
-        
-        <div class="mockup-section">
-            <h3 class="mockup-title">ထုတ်လုပ်ထားသော Mockup</h3>
-            
-            <div id="phoneFrame" class="phone-frame-image" 
-                 style="background-image: url('https://github.com/1k2k-vip/A/blob/main/1765583434579.png');">
-                
-                <div id="wallpaperLayer" class="wallpaper-layer">
-                    </div>
-            </div>
-            
-            <button id="generateMockupBtn" class="save-button">
-                 ⬇️ Mockup ပုံကို သိမ်းဆည်းရန်
-            </button>
-            
-            <a href="#" id="downloadLink" download="vivo-y72-mockup.png" class="download-link" style="display:none;">
-                <button class="download-button">
-                    ...ဒေါင်းလုဒ် လုပ်ဆောင်နေပါသည်...
-                </button>
-            </a>
-        </div>
+    <div class="card">
+        <div class="logo-name">KSO</div>
+
+        <p class="description">
+            မင်္ဂလာပါ။ KSO မှ ကြိုဆိုပါတယ်။<br>
+            အောက်ပါခလုတ်ကို နှိပ်၍ Download ရယူနိုင်ပါသည်။
+        </p>
+
+        <a href="#" class="download-btn">Download Now</a>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
