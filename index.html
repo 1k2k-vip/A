@@ -3,91 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSO Download Page</title>
+    <title>KSO VIP - VPN Download</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* အခြေခံ ဒီဇိုင်းသတ်မှတ်ချက်များ (CSS) */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298); /* နောက်ခံအရောင် */
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #3a7bd5, #00d2ff); /* အပြာရောင် Gradient */
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
+            overflow: hidden;
         }
 
-        /* ကတ်ပြားဒီဇိုင်း (Card UI) */
         .card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
             text-align: center;
-            max-width: 400px;
-            width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        /* KSO ခေါင်းစဉ် (Logo Name) */
+        /* (၁) လိုဂိုပုံ */
+        .main-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ff416c; /* လိုဂိုအရောင်နဲ့ လိုက်ဖက်အောင် အနီလိုင်းထည့်ထားသည် */
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
         .logo-name {
-            font-size: 3em;
+            font-size: 2.2em;
             font-weight: bold;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            color: #ffffff;
+            margin: 10px 0;
+            letter-spacing: 2px;
         }
 
-        /* စာတန်း (Description Text) */
         .description {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            color: #e0e0e0;
-            line-height: 1.6;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
 
-        /* Download ခလုတ်ဒီဇိုင်း */
-        .download-btn {
-            background-color: #00d2ff;
-            background-image: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
+        /* (၂၊ ၃၊ ၄) TRUE, AIS, DTAC ခလုတ်များ */
+        .operator-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .op-box {
+            background: white;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
             font-weight: bold;
+            font-size: 0.8em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
         }
 
-        /* ခလုတ်ကို mouse တင်လိုက်ရင် ဖြစ်မည့်ပုံစံ */
+        .op-box.true { color: #ff0000; }
+        .op-box.ais { color: #00b300; }
+        .op-box.dtac { color: #00aaff; }
+
+        /* (၅) Download ခလုတ် */
+        .download-btn {
+            background: #0052D4;
+            background: linear-gradient(to right, #6fb1fc, #4364f7, #0052D4);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
         .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transform: scale(1.05);
         }
 
-        .download-btn:active {
-            transform: translateY(1px);
+        /* (၆) Message လိုဂို */
+        .msg-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0084FF; /* Messenger Blue */
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
 
     <div class="card">
+        <img src="https://r2.erweima.ai/i/0_4228965902172772714.png" class="main-logo" alt="KSO Logo">
+        
         <div class="logo-name">KSO</div>
+        <p class="description">VPN ဝန်ဆောင်မှုကို အမြန်နှုန်းအမြင့်ဆုံးဖြင့် <br> အသုံးပြုနိုင်ပါသည်။</p>
 
-        <p class="description">
-            မင်္ဂလာပါ။ KSO မှ ကြိုဆိုပါတယ်။<br>
-            အောက်ပါခလုတ်ကို နှိပ်၍ Download ရယူနိုင်ပါသည်။
-        </p>
+        <div class="operator-group">
+            <div class="op-box true">TRUE</div>
+            <div class="op-box ais">AIS</div>
+            <div class="op-box dtac">DTAC</div>
+        </div>
 
-        <a href="#" class="download-btn">Download Now</a>
+        <a href="သင့်ရဲ့_APK_Link_ဒီမှာထည့်ပါ" class="download-btn">
+            <i class="fas fa-download"></i> Download App
+        </a>
     </div>
+
+    <a href="https://m.me/ကိုယ့်Pageနာမည်" class="msg-btn">
+        <i class="fab fa-facebook-messenger"></i>
+    </a>
 
 </body>
 </html>
