@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSO VIP - All Network Packages</title>
+    <title>KSO VIP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 20px 0;
-            font-family: 'Segoe UI', 'Pyidaungsu', sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
             min-height: 100vh;
             display: flex;
@@ -24,80 +24,71 @@
             padding: 20px;
             border-radius: 25px;
             text-align: center;
-            width: 360px;
+            width: 350px;
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
+        /* လိုဂိုဆိုဒ် 60 ပြင်ဆင်ထားသည် */
         .main-logo {
-            width: 85px;
-            height: 85px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 3px solid #ff416c;
-            margin-bottom: 5px;
+            border: 2px solid #ff416c;
+            margin-bottom: 10px;
+            object-fit: cover;
         }
 
         .logo-name {
-            font-size: 1.8em;
+            font-size: 1.6em;
             font-weight: bold;
             margin-bottom: 15px;
             color: #00d2ff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* --- Package Styling --- */
         .package-title {
             color: white;
             padding: 6px 12px;
             border-radius: 8px;
             font-weight: bold;
-            margin: 15px 0 8px 0;
+            margin: 12px 0 6px 0;
             display: flex;
             align-items: center;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         .bg-true { background: #ed1c24; }
         .bg-dtac { background: #00aaff; }
-        .bg-ais { background: #94c11f; } /* AIS Green */
+        .bg-ais { background: #94c11f; }
 
         .package-list {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .package-item {
             background: white;
             color: #333;
-            padding: 10px 15px;
-            border-radius: 12px;
+            padding: 8px 12px;
+            border-radius: 10px;
             text-decoration: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: 0.2s;
+            font-size: 0.9em;
         }
 
-        .package-item:active {
-            transform: scale(0.95);
-            background: #e0e0e0;
-        }
+        .code { font-weight: bold; }
 
-        .code { font-weight: bold; color: #222; font-size: 1em; }
-        .price { font-weight: bold; color: #444; font-size: 0.9em; }
-
-        /* --- Action Buttons --- */
         .download-btn {
-            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(to right, #4facfe, #00f2fe);
             color: white;
-            padding: 15px;
+            padding: 12px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: block;
-            margin: 25px 0 10px 0;
-            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+            margin-top: 20px;
         }
 
         .msg-btn {
@@ -105,68 +96,51 @@
             bottom: 20px;
             right: 20px;
             background: #0084FF;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 28px;
+            font-size: 24px;
             text-decoration: none;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <img src="https://github.com/1k2k-vip/kso-udp/blob/main/icon.png" class="main-logo" alt="KSO Logo">
+        <img src="https://r2.erweima.ai/i/0_4228965902172772714.png" class="main-logo" alt="KSO Logo">
+        
         <div class="logo-name">KSO VIP</div>
 
-        <div class="package-title bg-true"><i class="fas fa-sim-card"></i>&nbsp; TRUE PACKAGES</div>
+        <div class="package-title bg-true">TRUE PACKAGES</div>
         <div class="package-list">
-            <a href="tel:*900*3507#" class="package-item">
-                <span class="code">*900*3507#</span> <span class="price">1ရက် 6ဘတ်</span>
-            </a>
-            <a href="tel:*900*3508#" class="package-item">
-                <span class="code">*900*3508#</span> <span class="price">7ရက် 21ဘတ်</span>
-            </a>
-            <a href="tel:*900*3509#" class="package-item">
-                <span class="code">*900*3509#</span> <span class="price">30ရက် 53ဘတ်</span>
-            </a>
+            <a href="tel:*900*3507#" class="package-item"><span class="code">*900*3507#</span> <span>1ရက် 6ဘတ်</span></a>
+            <a href="tel:*900*3508#" class="package-item"><span class="code">*900*3508#</span> <span>7ရက် 21ဘတ်</span></a>
+            <a href="tel:*900*3509#" class="package-item"><span class="code">*900*3509#</span> <span>30ရက် 53ဘတ်</span></a>
         </div>
 
-        <div class="package-title bg-dtac"><i class="fas fa-sim-card"></i>&nbsp; DTAC PACKAGES</div>
+        <div class="package-title bg-dtac">DTAC PACKAGES</div>
         <div class="package-list">
-            <a href="tel:*177*15#" class="package-item">
-                <span class="code">*177*15#</span> <span class="price">15ရက် 15ဘတ်</span>
-            </a>
-            <a href="tel:*177*30#" class="package-item">
-                <span class="code">*177*30#</span> <span class="price">30ရက် 30ဘတ်</span>
-            </a>
+            <a href="tel:*177*15#" class="package-item"><span class="code">*177*15#</span> <span>15ရက် 15ဘတ်</span></a>
+            <a href="tel:*177*30#" class="package-item"><span class="code">*177*30#</span> <span>30ရက် 30ဘတ်</span></a>
         </div>
 
-        <div class="package-title bg-ais"><i class="fas fa-sim-card"></i>&nbsp; AIS PACKAGES</div>
+        <div class="package-title bg-ais">AIS PACKAGES</div>
         <div class="package-list">
-            <a href="tel:*777*7067#" class="package-item">
-                <span class="code">*777*7067#</span> <span class="price">30ရက် 30ဘတ်</span>
-            </a>
-            <a href="tel:*777*7068#" class="package-item">
-                <span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span>
-            </a>
+            <a href="tel:*777*7067#" class="package-item"><span class="code">*777*7067#</span> <span>30ရက် 30ဘတ်</span></a>
+            <a href="tel:*777*7068#" class="package-item"><span class="code">*777*7068#</span> <span>30ရက် 33ဘတ်</span></a>
         </div>
 
-        <a href="YOUR_APK_LINK_HERE" class="download-btn">
-            <i class="fas fa-download"></i> Download APK
-        </a>
+        <a href="YOUR_APK_LINK" class="download-btn">Download APK</a>
     </div>
 
-    <a href="https://m.me/YOUR_PAGE_ID" class="msg-btn">
+    <a href="https://m.me/YOUR_PAGE" class="msg-btn">
         <i class="fab fa-facebook-messenger"></i>
     </a>
 
 </body>
 </html>
-
