@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSO VIP - Premium Red Edition</title>
+    <title>KSO VIP - All Packages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* နောက်ခံ အနီရင့်ရောင် Gradient လှုပ်ရှားမှု */
+        /* နောက်ခံ အနီရောင် Gradient လှုပ်ရှားမှု */
         body {
             margin: 0;
             padding: 20px 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(-45deg, #1a0101, #450404, #910909, #000000);
             background-size: 400% 400%;
             animation: gradientBG 8s ease infinite;
@@ -28,7 +28,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* နှင်းကျနေသည့် ပုံစံ (အနီရောင်နှင့် လိုက်ဖက်အောင် opacity လျှော့ထားသည်) */
+        /* နှင်းကျနေသည့် ပုံစံ */
         body::before {
             content: "";
             position: fixed;
@@ -45,36 +45,35 @@
             100% { background-position: 500px 1000px; }
         }
 
-        /* Glassmorphism Card Style */
         .card {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             padding: 25px;
-            border-radius: 35px;
+            border-radius: 30px;
             text-align: center;
             width: 350px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 15px rgba(237, 28, 36, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             position: relative;
             z-index: 2;
         }
 
         .main-logo {
-            width: 85px;
-            height: 85px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 3px solid #ed1c24;
-            margin-bottom: 12px;
+            border: 2px solid #ed1c24;
+            margin-bottom: 10px;
             object-fit: cover;
             background: white;
-            box-shadow: 0 0 25px rgba(237, 28, 36, 0.6);
+            box-shadow: 0 0 20px rgba(237, 28, 36, 0.5);
         }
 
         .logo-name-text {
-            font-size: 2.4em;
+            font-size: 2.2em;
             font-weight: 900;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             letter-spacing: 2px;
             background: linear-gradient(to right, #ff5f6d, #ffffff);
             -webkit-background-clip: text;
@@ -84,14 +83,13 @@
 
         .package-title {
             color: white;
-            padding: 10px 15px;
-            border-radius: 12px;
+            padding: 8px 12px;
+            border-radius: 10px;
             font-weight: bold;
-            margin: 18px 0 10px 0;
+            margin: 15px 0 8px 0;
             display: flex;
             align-items: center;
             font-size: 0.9em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .bg-true { background: linear-gradient(90deg, #ed1c24, #ff5f6d); }
@@ -101,75 +99,60 @@
         .package-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .package-item {
             background: rgba(255, 255, 255, 0.95);
             color: #1a1a1a;
-            padding: 12px 18px;
-            border-radius: 15px;
+            padding: 10px 15px;
+            border-radius: 12px;
             text-decoration: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.95em;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s ease;
         }
 
-        /* Mouse တင်လျှင် ညာဘက်သို့ တိုးသွားသည့် Effect */
         .package-item:hover {
-            transform: translateX(10px);
+            transform: translateX(8px);
             background: #ffffff;
-            box-shadow: -5px 0 15px rgba(237, 28, 36, 0.4);
+            box-shadow: -5px 0 10px rgba(237, 28, 36, 0.3);
         }
 
         .package-item:active { transform: scale(0.95); }
         .code { font-weight: bold; }
         .price { color: #d32f2f; font-weight: bold; }
 
-        /* Download Button Glow Effect */
         .download-btn {
             background: linear-gradient(to right, #ed1c24, #ff5f6d);
             color: white;
-            padding: 16px;
+            padding: 15px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: block;
-            margin-top: 30px;
-            box-shadow: 0 10px 25px rgba(237, 28, 36, 0.5);
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .download-btn:hover {
-            box-shadow: 0 0 30px rgba(237, 28, 36, 0.8);
-            transform: translateY(-3px);
+            margin-top: 25px;
+            box-shadow: 0 8px 20px rgba(237, 28, 36, 0.4);
         }
 
         .msg-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 25px;
             background: #0084FF;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 28px;
+            font-size: 24px;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             z-index: 1000;
-            transition: 0.4s;
-        }
-
-        .msg-btn:hover {
-            transform: scale(1.1) rotate(10deg);
         }
     </style>
 </head>
@@ -181,21 +164,21 @@
 
         <div class="package-title bg-true"><i class="fas fa-sim-card"></i>&nbsp; TRUE PACKAGES</div>
         <div class="package-list">
-            <a href="tel:*900*3507#" class="package-item"><span class="code">*900*3507#</span> <span class="price">1ရက် 6ဘတ်</span></a>
-            <a href="tel:*900*3508#" class="package-item"><span class="code">*900*3508#</span> <span class="price">7ရက် 21ဘတ်</span></a>
-            <a href="tel:*900*3509#" class="package-item"><span class="code">*900*3509#</span> <span class="price">30ရက် 53ဘတ်</span></a>
+            <a href="tel:*900*3507%23" class="package-item"><span class="code">*900*3507#</span> <span class="price">1ရက် 6ဘတ်</span></a>
+            <a href="tel:*900*3508%23" class="package-item"><span class="code">*900*3508#</span> <span class="price">7ရက် 21ဘတ်</span></a>
+            <a href="tel:*900*3509%23" class="package-item"><span class="code">*900*3509#</span> <span class="price">30ရက် 53ဘတ်</span></a>
         </div>
 
         <div class="package-title bg-dtac"><i class="fas fa-sim-card"></i>&nbsp; DTAC PACKAGES</div>
         <div class="package-list">
-            <a href="tel:*177*15#" class="package-item"><span class="code">*177*15#</span> <span class="price">15ရက် 15ဘတ်</span></a>
-            <a href="tel:*177*30#" class="package-item"><span class="code">*177*30#</span> <span class="price">30ရက် 30ဘတ်</span></a>
+            <a href="tel:*177*15%23" class="package-item"><span class="code">*177*15#</span> <span class="price">15ရက် 15ဘတ်</span></a>
+            <a href="tel:*177*30%23" class="package-item"><span class="code">*177*30#</span> <span class="price">30ရက် 30ဘတ်</span></a>
         </div>
 
         <div class="package-title bg-ais"><i class="fas fa-sim-card"></i>&nbsp; AIS PACKAGES</div>
         <div class="package-list">
-            <a href="tel:*777*7067#" class="package-item"><span class="code">*777*7067#</span> <span class="price">30ရက် 30ဘတ်</span></a>
-            <a href="tel:*777*7068#" class="package-item"><span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span></a>
+            <a href="tel:*777*7067%23" class="package-item"><span class="code">*777*7067#</span> <span class="price">30ရက် 30ဘတ်</span></a>
+            <a href="tel:*777*7068%23" class="package-item"><span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span></a>
         </div>
 
         <a href="https://github.com/1k2k-vip/Apk/releases/download/v1.07/KSO.VPN.apk" class="download-btn"><i class="fas fa-download"></i> Download APK</a>
