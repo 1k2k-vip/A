@@ -2,209 +2,206 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KSO VIP - All-in-One</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSO VIP - All Packages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --true-color: linear-gradient(90deg, #ff1f1f, #ff5f6d);
-            --dtac-color: linear-gradient(90deg, #00aaff, #00d2ff);
-            --ais-color: linear-gradient(90deg, #94c11f, #b4ec51);
+        /* နောက်ခံ အနီရောင် Gradient လှုပ်ရှားမှု */
+        body {
+    margin: 0;
+    padding: 20px 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* အရောင်စပ်ပုံ - အနက်ရင့်မှ သွေးနီရောင်သို့ */
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #800000, #b22222);
+    /* ပိုပြီး လှပတဲ့ အနီရောင်စပ်နည်း (Dark Crimson & Black Onyx) */
+    background: linear-gradient(-45deg, #000000, #1a0101, #4d0000, #800000, #1a0101);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Card ကို ပိုပေါ်လွင်စေမည့် Glow Effect */
+.card {
+    background: rgba(15, 2, 2, 0.6); /* အနီနက်ရောင်အကြည် */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 0, 0, 0.2); /* အနီရောင်ပါးပါးဘောင် */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(178, 34, 34, 0.2);
+    /* ... ကျန်တဲ့ card style များ ... */
+}
+
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        /* နှင်းကျနေသည့် ပုံစံ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/snow.png');
+            animation: snow 15s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.2;
+        }
 
-        body {
-            font-family: 'Noto Sans Myanmar', sans-serif;
-            background: #0b0b0d radial-gradient(at 50% 50%, #1a0101 0%, #0b0b0d 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            overflow: hidden; /* Screen ထဲ ကွက်တိဖြစ်အောင် ပိုတာဖြတ်သည် */
-            padding: 8px;
+        @keyframes snow {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 500px 1000px; }
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            padding: 10px;
-            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 25px;
+            border-radius: 30px;
             text-align: center;
-            width: 100%;
-            max-width: 350px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 8px;
+            width: 350px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            position: relative;
+            z-index: 2;
         }
 
         .main-logo {
-            width: 45px;
-            height: 45px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 2px solid #ff1f1f;
+            border: 2px solid #ed1c24;
+            margin-bottom: 10px;
+            object-fit: cover;
             background: white;
+            box-shadow: 0 0 20px rgba(237, 28, 36, 0.5);
         }
 
         .logo-name-text {
-            font-size: 1.3em;
+            font-size: 2.2em;
             font-weight: 900;
-            background: linear-gradient(to right, #ffffff, #ff5f6d);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ff5f6d, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
         .package-title {
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.65em;
-            text-align: left;
-            margin-top: 6px;
-            margin-bottom: 3px;
-            letter-spacing: 0.5px;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 15px 0 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
         }
 
-        .bg-true { background: var(--true-color); }
-        .bg-dtac { background: var(--dtac-color); }
-        .bg-ais { background: var(--ais-color); }
+        .bg-true { background: linear-gradient(90deg, #ed1c24, #ff5f6d); }
+        .bg-dtac { background: linear-gradient(90deg, #00aaff, #00d2ff); }
+        .bg-ais { background: linear-gradient(90deg, #94c11f, #b4ec51); }
 
         .package-list {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 8px;
         }
 
         .package-item {
-            background: rgba(255, 255, 255, 0.07);
-            padding: 6px 10px;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a1a1a;
+            padding: 10px 15px;
+            border-radius: 12px;
+            text-decoration: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.95em;
+            transition: 0.3s ease;
         }
 
-        .info { text-align: left; line-height: 1.1; }
-        .code {
-            display: block;
-            font-weight: 700;
-            font-size: 0.85em;
-            font-family: monospace;
-            color: #fff;
+        .package-item:hover {
+            transform: translateX(8px);
+            background: #ffffff;
+            box-shadow: -5px 0 10px rgba(237, 28, 36, 0.3);
         }
 
-        .price {
-            font-size: 0.65em;
-            color: #ff5f6d;
-            font-weight: bold;
-        }
-
-        .call-btn {
-            background: #2ecc71;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            font-size: 0.8em;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+        .package-item:active { transform: scale(0.95); }
+        .code { font-weight: bold; }
+        .price { color: #d32f2f; font-weight: bold; }
 
         .download-btn {
-            background: linear-gradient(45deg, #ff1f1f, #ff5f6d);
+            background: linear-gradient(to right, #ed1c24, #ff5f6d);
             color: white;
-            padding: 8px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: bold;
             display: block;
-            margin-top: 10px;
-            font-size: 0.75em;
-            box-shadow: 0 4px 10px rgba(255, 31, 31, 0.2);
+            margin-top: 25px;
+            box-shadow: 0 8px 20px rgba(237, 28, 36, 0.4);
         }
 
         .msg-btn {
             position: fixed;
-            bottom: 12px;
-            right: 12px;
+            bottom: 25px;
+            right: 25px;
             background: #0084FF;
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 20px;
+            font-size: 24px;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <div class="header">
-            <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/main/icon.png" class="main-logo" alt="Logo">
-            <div class="logo-name-text">KSO VIP</div>
-        </div>
+        <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/main/icon.png" class="main-logo" alt="Logo">
+        <div class="logo-name-text">KSO VIP</div>
 
-        <div class="package-title bg-true"><i class="fas fa-sim-card"></i> TRUE PACKAGES</div>
+        <div class="package-title bg-true"><i class="fas fa-sim-card"></i>&nbsp; TRUE PACKAGES</div>
         <div class="package-list">
-            <div class="package-item">
-                <div class="info"><span class="code">*900*3507#</span><span class="price">၁ရက် (၆ဘတ်)</span></div>
-                <a href="tel:*900*3507%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
-            <div class="package-item">
-                <div class="info"><span class="code">*900*3508#</span><span class="price">၇ရက် (၂၁ဘတ်)</span></div>
-                <a href="tel:*900*3508%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
-            <div class="package-item">
-                <div class="info"><span class="code">*900*3509#</span><span class="price">၃၀ရက် (၅၃ဘတ်)</span></div>
-                <a href="tel:*900*3509%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
+            <a href="tel:*900*3507%23" class="package-item"><span class="code">*900*3507#</span> <span class="price">1ရက် 6ဘတ်</span></a>
+            <a href="tel:*900*3508%23" class="package-item"><span class="code">*900*3508#</span> <span class="price">7ရက် 21ဘတ်</span></a>
+            <a href="tel:*900*3509%23" class="package-item"><span class="code">*900*3509#</span> <span class="price">30ရက် 53ဘတ်</span></a>
         </div>
 
-        <div class="package-title bg-dtac"><i class="fas fa-sim-card"></i> DTAC PACKAGES</div>
+        <div class="package-title bg-dtac"><i class="fas fa-sim-card"></i>&nbsp; DTAC PACKAGES</div>
         <div class="package-list">
-            <div class="package-item">
-                <div class="info"><span class="code">*177*15#</span><span class="price">၁၅ရက် (၁၅ဘတ်)</span></div>
-                <a href="tel:*177*15%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
-            <div class="package-item">
-                <div class="info"><span class="code">*177*30#</span><span class="price">၃၀ရက် (၃၀ဘတ်)</span></div>
-                <a href="tel:*177*30%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
+            <a href="tel:*177*15%23" class="package-item"><span class="code">*177*15#</span> <span class="price">15ရက် 15ဘတ်</span></a>
+            <a href="tel:*177*30%23" class="package-item"><span class="code">*177*30#</span> <span class="price">30ရက် 30ဘတ်</span></a>
         </div>
 
-        <div class="package-title bg-ais"><i class="fas fa-sim-card"></i> AIS PACKAGES</div>
+        <div class="package-title bg-ais"><i class="fas fa-sim-card"></i>&nbsp; AIS PACKAGES</div>
         <div class="package-list">
-            <div class="package-item">
-                <div class="info"><span class="code">*777*7067#</span><span class="price">၃၀ရက် (၃၀ဘတ်)</span></div>
-                <a href="tel:*777*7067%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
-            <div class="package-item">
-                <div class="info"><span class="code">*777*7068#</span><span class="price">၃၀ရက် (၃၃ဘတ်)</span></div>
-                <a href="tel:*777*7068%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
-            </div>
+            <a href="tel:*777*7067%23" class="package-item"><span class="code">*777*7067#</span> <span class="price">30ရက် 30ဘတ်</span></a>
+            <a href="tel:*777*7068%23" class="package-item"><span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span></a>
         </div>
 
-        <a href="https://github.com/1k2k-vip/Apk/releases/download/v1.07/KSO.VPN.apk" class="download-btn">
-             DOWNLOAD APPLICATION
-        </a>
+        <a href="https://github.com/1k2k-vip/Apk/releases/download/v1.07/KSO.VPN.apk" class="download-btn"><i class="fas fa-download"></i> Download APK</a>
     </div>
 
     <a href="https://m.me/kyawsoe.oo.1292019" class="msg-btn">
