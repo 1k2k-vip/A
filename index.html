@@ -8,19 +8,39 @@
     <style>
         /* နောက်ခံ အနီရောင် Gradient လှုပ်ရှားမှု */
         body {
-            margin: 0;
-            padding: 20px 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(-45deg, #1a0101, #450404, #910909, #000000);
-            background-size: 400% 400%;
-            animation: gradientBG 8s ease infinite;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            overflow-x: hidden;
-        }
+    margin: 0;
+    padding: 20px 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* အရောင်စပ်ပုံ - အနက်ရင့်မှ သွေးနီရောင်သို့ */
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #800000, #b22222);
+    /* ပိုပြီး လှပတဲ့ အနီရောင်စပ်နည်း (Dark Crimson & Black Onyx) */
+    background: linear-gradient(-45deg, #000000, #1a0101, #4d0000, #800000, #1a0101);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Card ကို ပိုပေါ်လွင်စေမည့် Glow Effect */
+.card {
+    background: rgba(15, 2, 2, 0.6); /* အနီနက်ရောင်အကြည် */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 0, 0, 0.2); /* အနီရောင်ပါးပါးဘောင် */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(178, 34, 34, 0.2);
+    /* ... ကျန်တဲ့ card style များ ... */
+}
+
 
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
