@@ -10,26 +10,50 @@
             margin: 0;
             padding: 20px 0;
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(180deg, #0f2027, #2c5364);
+            /* 4K Snow Night Background */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1478720568477-15109b3f930e?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
+            overflow-x: hidden;
+        }
+
+        /* နှင်းကျနေသည့် ပုံစံဖန်တီးခြင်း (Snow Animation) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/snow.png');
+            animation: snow 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes snow {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 500px 1000px; }
         }
 
         .card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 25px;
-            border-radius: 25px;
+            border-radius: 30px;
             text-align: center;
             width: 350px;
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2; /* နှင်းများ၏အပေါ်တွင်ရှိစေရန် */
         }
 
-        /* လိုဂိုပုံ ဒီဇိုင်း */
         .main-logo {
             width: 80px;
             height: 80px;
@@ -38,16 +62,15 @@
             margin-bottom: 10px;
             object-fit: cover;
             background: white;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
         }
 
-        /* KSO VIP စာသားဒီဇိုင်း */
         .logo-name-text {
             font-size: 2.2em;
             font-weight: 900;
             margin-bottom: 20px;
             letter-spacing: 2px;
-            background: linear-gradient(to right, #00d2ff, #3a7bd5);
+            background: linear-gradient(to right, #00d2ff, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
@@ -56,7 +79,7 @@
         .package-title {
             color: white;
             padding: 8px 12px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             margin: 15px 0 8px 0;
             display: flex;
@@ -64,19 +87,19 @@
             font-size: 0.9em;
         }
 
-        .bg-true { background: #ed1c24; }
-        .bg-dtac { background: #00aaff; }
-        .bg-ais { background: #94c11f; }
+        .bg-true { background: linear-gradient(90deg, #ed1c24, #ff5f6d); }
+        .bg-dtac { background: linear-gradient(90deg, #00aaff, #00d2ff); }
+        .bg-ais { background: linear-gradient(90deg, #94c11f, #b4ec51); }
 
         .package-list {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .package-item {
-            background: white;
-            color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1a1a1a;
             padding: 10px 15px;
             border-radius: 12px;
             text-decoration: none;
@@ -84,23 +107,23 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.95em;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
-        .package-item:active { transform: scale(0.96); }
-        .code { font-weight: bold; color: #111; }
-        .price { color: #555; font-size: 0.9em; }
+        .package-item:hover { transform: translateY(-2px); background: #fff; }
+        .code { font-weight: bold; }
+        .price { color: #d32f2f; font-weight: bold; }
 
         .download-btn {
-            background: linear-gradient(to right, #4facfe, #00f2fe);
+            background: linear-gradient(to right, #00c6ff, #0072ff);
             color: white;
             padding: 15px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             display: block;
-            margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+            margin-top: 25px;
+            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.4);
         }
 
         .msg-btn {
@@ -118,6 +141,7 @@
             font-size: 24px;
             text-decoration: none;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
@@ -147,7 +171,7 @@
             <a href="tel:*777*7068#" class="package-item"><span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span></a>
         </div>
 
-        <a href="YOUR_APK_LINK" class="download-btn"><i class="fas fa-download"></i> Download App</a>
+        <a href="YOUR_APK_LINK" class="download-btn"><i class="fas fa-download"></i> Download APK</a>
     </div>
 
     <a href="https://m.me/kyawsoe.oo.1292019" class="msg-btn">
