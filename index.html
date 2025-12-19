@@ -6,16 +6,14 @@
     <title>KSO VIP - All Packages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* နောက်ခံအရောင် တရွေ့ရွေ့ပြောင်းလဲနေစေရန် */
         body {
             margin: 0;
             padding: 20px 0;
             font-family: 'Segoe UI', sans-serif;
-            /* 4K Snow Night Background */
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('https://images.unsplash.com/photo-1478720568477-15109b3f930e?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,15 +22,22 @@
             overflow-x: hidden;
         }
 
-        /* နှင်းကျနေသည့် ပုံစံဖန်တီးခြင်း (Snow Animation) */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* နှင်းကျနေသည့် ပုံစံ (Snow Animation) */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('https://www.transparenttextures.com/patterns/snow.png');
-            animation: snow 20s linear infinite;
+            animation: snow 15s linear infinite;
             pointer-events: none;
             z-index: 1;
+            opacity: 0.5;
         }
 
         @keyframes snow {
@@ -42,16 +47,16 @@
 
         .card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             padding: 25px;
             border-radius: 30px;
             text-align: center;
             width: 350px;
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
             position: relative;
-            z-index: 2; /* နှင်းများ၏အပေါ်တွင်ရှိစေရန် */
+            z-index: 2;
         }
 
         .main-logo {
@@ -110,7 +115,7 @@
             transition: 0.3s;
         }
 
-        .package-item:hover { transform: translateY(-2px); background: #fff; }
+        .package-item:active { transform: scale(0.95); }
         .code { font-weight: bold; }
         .price { color: #d32f2f; font-weight: bold; }
 
@@ -123,7 +128,7 @@
             font-weight: bold;
             display: block;
             margin-top: 25px;
-            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.3);
         }
 
         .msg-btn {
@@ -149,34 +154,10 @@
 
     <div class="card">
         <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/main/icon.png" class="main-logo" alt="Logo">
-
         <div class="logo-name-text">KSO VIP</div>
 
         <div class="package-title bg-true"><i class="fas fa-sim-card"></i>&nbsp; TRUE PACKAGES</div>
         <div class="package-list">
             <a href="tel:*900*3507#" class="package-item"><span class="code">*900*3507#</span> <span class="price">1ရက် 6ဘတ်</span></a>
             <a href="tel:*900*3508#" class="package-item"><span class="code">*900*3508#</span> <span class="price">7ရက် 21ဘတ်</span></a>
-            <a href="tel:*900*3509#" class="package-item"><span class="code">*900*3509#</span> <span class="price">30ရက် 53ဘတ်</span></a>
-        </div>
-
-        <div class="package-title bg-dtac"><i class="fas fa-sim-card"></i>&nbsp; DTAC PACKAGES</div>
-        <div class="package-list">
-            <a href="tel:*177*15#" class="package-item"><span class="code">*177*15#</span> <span class="price">15ရက် 15ဘတ်</span></a>
-            <a href="tel:*177*30#" class="package-item"><span class="code">*177*30#</span> <span class="price">30ရက် 30ဘတ်</span></a>
-        </div>
-
-        <div class="package-title bg-ais"><i class="fas fa-sim-card"></i>&nbsp; AIS PACKAGES</div>
-        <div class="package-list">
-            <a href="tel:*777*7067#" class="package-item"><span class="code">*777*7067#</span> <span class="price">30ရက် 30ဘတ်</span></a>
-            <a href="tel:*777*7068#" class="package-item"><span class="code">*777*7068#</span> <span class="price">30ရက် 33ဘတ်</span></a>
-        </div>
-
-        <a href="YOUR_APK_LINK" class="download-btn"><i class="fas fa-download"></i> Download APK</a>
-    </div>
-
-    <a href="https://m.me/kyawsoe.oo.1292019" class="msg-btn">
-        <i class="fab fa-facebook-messenger"></i>
-    </a>
-
-</body>
-</html>
+            <a href="tel:*900*3509#" class="package-item"><span
