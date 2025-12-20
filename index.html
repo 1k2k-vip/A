@@ -50,6 +50,7 @@
             border: 3px solid #ff1f1f;
             margin-bottom: 10px;
             background: white;
+            box-shadow: 0 0 30px rgba(255, 31, 31, 0.3);
         }
 
         .logo-name-text {
@@ -59,6 +60,7 @@
             background: linear-gradient(to right, #ffffff, #ff5f6d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
         }
 
         .sub-text {
@@ -67,22 +69,23 @@
             margin-bottom: 15px;
         }
 
+        /* Mini Logos with Links */
         .mini-logos {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        
         .mini-logos a {
             text-decoration: none;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
         .mini-logos i {
-            font-size: 30px;
+            font-size: 32px;
         }
-
         .fa-facebook { color: #1877F2; }
         .fa-telegram { color: #26A5E4; }
         .fa-globe { color: #00d2ff; }
@@ -95,41 +98,61 @@
             padding: 12px 15px;
             border-radius: 15px;
             font-weight: 700;
-            margin: 20px 0 12px 0;
+            margin: 25px 0 12px 0;
             display: flex;
             align-items: center;
             font-size: 0.85em;
+            text-transform: uppercase;
         }
 
         .bg-true { background: var(--true-color); }
         .bg-dtac { background: var(--dtac-color); }
         .bg-ais { background: var(--ais-color); }
 
-        .package-list { display: flex; flex-direction: column; gap: 10px; }
+        .package-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
         .package-item {
             background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 15px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: 0.3s;
         }
 
         .info { text-align: left; }
-        .code { display: block; font-weight: 800; font-size: 1.1em; }
-        .price { font-size: 0.8em; color: #ff5f6d; }
+        .code {
+            display: block;
+            font-weight: 800;
+            font-size: 1.2em;
+            color: #fff;
+            font-family: monospace;
+        }
+
+        .price {
+            font-size: 0.85em;
+            color: #ff5f6d;
+            font-weight: bold;
+        }
 
         .call-btn {
             background: #2ecc71;
             color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
+            font-size: 1.2em;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
         }
 
         .download-btn {
@@ -140,7 +163,9 @@
             text-decoration: none;
             font-weight: 700;
             display: block;
-            margin-top: 30px;
+            margin-top: 35px;
+            font-size: 1.1em;
+            box-shadow: 0 15px 30px rgba(255, 31, 31, 0.3);
         }
 
         .msg-btn {
@@ -157,6 +182,7 @@
             color: white;
             font-size: 30px;
             text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,132,255,0.4);
         }
     </style>
 </head>
@@ -168,10 +194,10 @@
         <div class="sub-text">ပရီမီယံ VPN ဝန်ဆောင်မှု ပက်ကေ့ချ်များ</div>
 
         <div class="mini-logos">
-            <a href="https://www.facebook.com/kyawsoe.oo.1292019" target="_blank" title="Facebook Page">
+            <a href="https://www.facebook.com/kyawsoe.oo.1292019" target="_blank" title="Facebook">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://t.me/your_telegram_channel" target="_blank" title="Telegram Channel">
+            <a href="https://t.me/your_telegram_channel" target="_blank" title="Telegram">
                 <i class="fab fa-telegram"></i>
             </a>
             <a href="https://fast.com/" target="_blank" title="Speed Test">
@@ -189,6 +215,10 @@
                 <div class="info"><span class="code">*900*3508#</span><span class="price">၇ ရက် (၂၁ ဘတ်)</span></div>
                 <a href="tel:*900*3508%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
             </div>
+            <div class="package-item">
+                <div class="info"><span class="code">*900*3509#</span><span class="price">၃၀ ရက် (၅၃ ဘတ်)</span></div>
+                <a href="tel:*900*3509%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
+            </div>
         </div>
 
         <div class="package-title bg-dtac"><i class="fas fa-bolt"></i>&nbsp; DTAC အရံနက်စမတ်</div>
@@ -197,6 +227,10 @@
                 <div class="info"><span class="code">*177*15#</span><span class="price">၁၅ ရက် (၁၅ ဘတ်)</span></div>
                 <a href="tel:*177*15%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
             </div>
+            <div class="package-item">
+                <div class="info"><span class="code">*177*30#</span><span class="price">၃၀ ရက် (၃၀ ဘတ်)</span></div>
+                <a href="tel:*177*30%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
+            </div>
         </div>
 
         <div class="package-title bg-ais"><i class="fas fa-signal"></i>&nbsp; AIS 64Kbpsစမတ်</div>
@@ -204,6 +238,10 @@
             <div class="package-item">
                 <div class="info"><span class="code">*777*7067#</span><span class="price">၃၀ ရက် (၃၀ ဘတ်)</span></div>
                 <a href="tel:*777*7067%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
+            </div>
+            <div class="package-item">
+                <div class="info"><span class="code">*777*7068#</span><span class="price">၃၀ ရက် (၃၃ ဘတ်)</span></div>
+                <a href="tel:*777*7068%23" class="call-btn"><i class="fas fa-phone-alt"></i></a>
             </div>
         </div>
 
