@@ -3,137 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSO VIP - Snow & Glow Edition</title>
+    <title>KSO VIP - Auto Theme Snow</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Zeyar&family=Montserrat:wght@800&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zeyar&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     
     <style>
         :root {
+            /* Light Mode Colors (Default) */
+            --bg-color: #f0f2f5;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1a1a1a;
+            --text-sub: #65676b;
+            --snow-color: #ffffff;
+            --snow-glow: rgba(0, 0, 0, 0.1);
+            --border-color: rgba(0, 0, 0, 0.05);
+            
             --true-color: linear-gradient(135deg, #ff416c, #ff4b2b);
-            --dtac-color: linear-gradient(135deg, #4facfe, #00f2fe);
-            --ais-color: linear-gradient(135deg, #667eea, #764ba2);
-            --glow-color: #ff4b2b;
+            --dtac-color: linear-gradient(135deg, #00c6ff, #0072ff);
+            --ais-color: linear-gradient(135deg, #a8ff78, #78ffd6);
+        }
+
+        /* Dark Mode Colors (Auto Switch) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0d0d11;
+                --card-bg: rgba(24, 24, 28, 0.9);
+                --text-main: #ffffff;
+                --text-sub: rgba(255, 255, 255, 0.6);
+                --snow-color: #ffffff;
+                --snow-glow: rgba(255, 255, 255, 0.8);
+                --border-color: rgba(255, 255, 255, 0.1);
+            }
         }
 
         body {
             margin: 0; padding: 20px 10px;
-            font-family: 'Zeyar', 'Noto Sans Myanmar', sans-serif;
-            background-color: #0d0d11;
-            background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0d0d11 100%);
-            min-height: 100vh; display: flex; justify-content: center; align-items: center; color: white;
-            background-attachment: fixed;
+            font-family: 'Zeyar', sans-serif;
+            background-color: var(--bg-color);
+            transition: background-color 0.5s ease;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center; color: var(--text-main);
             overflow-x: hidden;
         }
 
-        /* Snow Effect */
-        .snow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
-        .snowflake { position: absolute; top: -10px; color: white; font-size: 1em; opacity: 0.8; user-select: none; pointer-events: none; animation: fall linear infinite; }
-        @keyframes fall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg); } }
-
-        .card {
-            position: relative; z-index: 100;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 30px 20px; border-radius: 40px; text-align: center;
-            width: 100%; max-width: 380px; border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        /* --- Snow Styling (Big & Clear) --- */
+        .snow-wrapper {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
         }
 
-        .main-logo { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #ff416c; margin-bottom: 12px; background: white; padding: 3px; }
-        .logo-name-text { font-family: 'Montserrat', sans-serif; font-size: 2.4em; font-weight: 800; background: linear-gradient(to right, #fff, #ff416c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .sub-text { font-family: 'Zeyar', cursive; font-size: 1.1em; color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; }
+        .snowflake {
+            position: absolute; top: -20px;
+            background: var(--snow-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--snow-glow);
+            animation: fall linear infinite;
+        }
 
-        .online-box { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 25px; }
-        .status-header { display: flex; align-items: center; gap: 10px; background: rgba(46, 204, 113, 0.1); padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(46, 204, 113, 0.3); color: #2ecc71; }
-        .online-label { font-family: 'Zeyar', cursive; font-size: 0.9em; color: #2ecc71; }
-        .dot { width: 8px; height: 8px; background-color: #2ecc71; border-radius: 50%; position: relative; }
-        .dot::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: #2ecc71; border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(3); opacity: 0; } }
+        @keyframes fall {
+            0% { transform: translateY(0vh) translateX(0); }
+            100% { transform: translateY(110vh) translateX(80px); }
+        }
 
-        .package-title { padding: 12px 18px; border-radius: 15px; font-weight: 700; margin: 25px 0 12px 0; display: flex; align-items: center; font-size: 0.85em; font-family: 'Montserrat', sans-serif; }
+        /* --- Card Design --- */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 35px 22px; border-radius: 40px; text-align: center;
+            width: 100%; max-width: 380px; 
+            border: 1px solid var(--border-color);
+            position: relative; z-index: 10;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #ff416c; background: #fff; padding: 4px; margin-bottom: 15px; }
+        
+        .logo-name-text { 
+            font-family: 'Montserrat', sans-serif; font-size: 2.5em; font-weight: 800; 
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .sub-text { color: var(--text-sub); margin-bottom: 25px; font-size: 1.1em; }
+
+        .mini-logos { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+        .mini-logos a { font-size: 30px; text-decoration: none; color: var(--text-main); transition: 0.3s; }
+        .mini-logos a:hover { transform: scale(1.2); color: #ff416c; }
+
+        .package-title { 
+            padding: 12px 18px; border-radius: 15px; font-weight: 800; margin: 25px 0 10px 0; 
+            font-family: 'Montserrat', sans-serif; font-size: 0.85em; text-align: left; color: #fff;
+        }
         .bg-true { background: var(--true-color); }
         .bg-dtac { background: var(--dtac-color); }
-        .bg-ais { background: var(--ais-color); }
-        
-        .package-item { background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 22px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .code { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2em; }
-        .price { font-family: 'Zeyar', cursive; font-size: 1em; color: rgba(255, 255, 255, 0.85); }
-        
-        .call-btn { background: #2ecc71; color: white; width: 44px; height: 44px; border-radius: 15px; display: flex; justify-content: center; align-items: center; text-decoration: none; }
+        .bg-ais { background: var(--ais-color); color: #000; }
 
-        /* Glow Download Button */
-        .download-btn {
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: white; padding: 18px; border-radius: 22px;
-            text-decoration: none; font-weight: 700; display: block;
-            margin-top: 35px; font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase; letter-spacing: 1px;
-            /* Glow Animation */
-            box-shadow: 0 0 15px rgba(255, 75, 43, 0.5);
-            animation: glow 2s infinite alternate;
-            transition: 0.3s;
+        .package-item { 
+            background: rgba(128, 128, 128, 0.1); padding: 15px; border-radius: 22px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 10px; border: 1px solid var(--border-color);
         }
-        @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255, 75, 43, 0.4), 0 0 20px rgba(255, 75, 43, 0.2); }
-            100% { box-shadow: 0 0 25px rgba(255, 75, 43, 0.8), 0 0 40px rgba(255, 75, 43, 0.4); transform: scale(1.02); }
+
+        .code { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3em; color: var(--text-main); }
+        .price { display: block; font-size: 1em; color: var(--text-sub); text-align: left; }
+        
+        .call-btn { 
+            background: #2ecc71; color: white; width: 48px; height: 48px; 
+            border-radius: 16px; display: flex; justify-content: center; align-items: center; 
+            text-decoration: none; font-size: 1.3em;
+        }
+
+        .download-btn { 
+            background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; padding: 20px; 
+            border-radius: 25px; text-decoration: none; font-weight: 800; display: block; 
+            margin-top: 30px; font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+        }
+        
+        .msg-btn { 
+            position: fixed; bottom: 25px; right: 25px; background: #0084FF; 
+            width: 65px; height: 65px; border-radius: 20px; display: flex; 
+            justify-content: center; align-items: center; color: white; font-size: 30px; 
+            text-decoration: none; z-index: 100; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
-<div class="snow-container" id="snow"></div>
+<div class="snow-wrapper" id="snow-container"></div>
 
 <div class="card">
     <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/main/icon.png" class="main-logo">
     <div class="logo-name-text">KSO VIP</div>
-    <div class="sub-text">အကောင်းဆုံး VPN ဝန်ဆောင်မှုများ</div>
+    <div class="sub-text">အကောင်းဆုံး VPN ဝန်ဆောင်မှု</div>
 
-    <div class="online-box">
-        <div class="status-header">
-            <span class="dot"></span>
-            <i class="fas fa-user-friends"></i>
-        </div>
-        <div class="online-label">လက်ရှိအသုံးပြုသူ - ၂၃ ယောက်</div>
+    <div class="mini-logos">
+        <a href="https://www.facebook.com/kyawsoe.oo.1292019"><i class="fab fa-facebook"></i></a>
+        <a href="https://t.me/your_telegram_channel"><i class="fab fa-telegram"></i></a>
+        <a href="https://fast.com/"><i class="fas fa-globe"></i></a>
     </div>
 
-    <div class="package-title bg-true"><i class="fas fa-fire-alt"></i>&nbsp; TRUE (TWITTER)စမတ်ပါ</div>
-    <div class="package-list">
-        <div class="package-item"><div class="info"><span class="code">*900*3507#</span><span class="price">၁ ရက် (၆ ဘတ်)</span></div><a href="tel:*900*3507%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-        <div class="package-item"><div class="info"><span class="code">*900*3508#</span><span class="price">၇ ရက် (၂၁ ဘတ်)</span></div><a href="tel:*900*3508%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-        <div class="package-item"><div class="info"><span class="code">*900*3509#</span><span class="price">၃၀ ရက် (၅၃ ဘတ်)</span></div><a href="tel:*900*3509%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-    </div>
+    <div class="package-title bg-true">TRUE PACKAGE</div>
+    <div class="package-item"><div><span class="code">*900*3507#</span><span class="price">၁ ရက်စာ (၆ ဘတ်)</span></div><a href="tel:*900*3507%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
+    <div class="package-item"><div><span class="code">*900*3508#</span><span class="price">၇ ရက်စာ (၂၁ ဘတ်)</span></div><a href="tel:*900*3508%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
+    <div class="package-item"><div><span class="code">*900*3509#</span><span class="price">၃၀ ရက်စာ (၅၃ ဘတ်)</span></div><a href="tel:*900*3509%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
 
-    <div class="package-title bg-dtac"><i class="fas fa-bolt"></i>&nbsp; DTAC (ကျိုင်းဒီး)စမတ်ပါ</div>
-    <div class="package-list">
-        <div class="package-item"><div class="info"><span class="code">*177*15#</span><span class="price">၁၅ ရက် (၁၅ ဘတ်)</span></div><a href="tel:*177*15%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-        <div class="package-item"><div class="info"><span class="code">*177*30#</span><span class="price">၃၀ ရက် (၃၀ ဘတ်)</span></div><a href="tel:*177*30%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-    </div>
+    <div class="package-title bg-dtac">DTAC PACKAGE</div>
+    <div class="package-item"><div><span class="code">*177*15#</span><span class="price">၁၅ ရက်စာ (၁၅ ဘတ်)</span></div><a href="tel:*177*15%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
+    <div class="package-item"><div><span class="code">*177*30#</span><span class="price">၃၀ ရက်စာ (၃၀ ဘတ်)</span></div><a href="tel:*177*30%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
 
-    <div class="package-title bg-ais"><i class="fas fa-signal"></i>&nbsp; AIS (64Kbps)စမတ်ပါ</div>
-    <div class="package-list">
-        <div class="package-item"><div class="info"><span class="code">*777*7067#</span><span class="price">၃၀ ရက် (၃၀ ဘတ်)</span></div><a href="tel:*777*7067%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-        <div class="package-item"><div class="info"><span class="code">*777*7068#</span><span class="price">၃၀ ရက် (၃၃ ဘတ်)</span></div><a href="tel:*777*7068%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
-    </div>
+    <div class="package-title bg-ais">AIS PACKAGE</div>
+    <div class="package-item"><div><span class="code">*777*7067#</span><span class="price">၃၀ ရက်စာ (၃၀ ဘတ်)</span></div><a href="tel:*777*7067%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
+    <div class="package-item"><div><span class="code">*777*7068#</span><span class="price">၃၀ ရက်စာ (၃၃ ဘတ်)</span></div><a href="tel:*777*7068%23" class="call-btn"><i class="fas fa-phone-alt"></i></a></div>
 
-    <a href="https://github.com/1k2k-vip/Apk/releases/download/v1.07/KSO.VPN.apk" class="download-btn">
-        <i class="fas fa-download"></i> ယခု APK ဒေါင်းလုဒ်လုပ်ပါ။
-    </a>
+    <a href="https://github.com/1k2k-vip/Apk/releases/download/v1.07/KSO.VPN.apk" class="download-btn">DOWNLOAD APK</a>
 </div>
 
+<a href="https://m.me/kyawsoe.oo.1292019" class="msg-btn">
+    <i class="fab fa-facebook-messenger"></i>
+</a>
+
 <script>
-    function createSnowflake() {
-        const snow = document.getElementById('snow');
-        const flake = document.createElement('div');
-        flake.classList.add('snowflake');
-        flake.innerHTML = '❄';
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.animationDuration = Math.random() * 3 + 2 + 's';
-        flake.style.opacity = Math.random();
-        flake.style.fontSize = Math.random() * 10 + 10 + 'px';
-        snow.appendChild(flake);
-        setTimeout(() => { flake.remove(); }, 5000);
+    const snowContainer = document.getElementById('snow-container');
+    const snowCount = 40; 
+
+    for (let i = 0; i < snowCount; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        
+        // နှင်းပွင့်အရွယ်အစားကို ကြီးကြီး (10px မှ 22px အထိ) လုပ်ထားပါတယ်
+        const size = Math.random() * 12 + 10 + 'px';
+        snowflake.style.width = size;
+        snowflake.style.height = size;
+        
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 4 + 6 + 's';
+        snowflake.style.animationDelay = Math.random() * 5 + 's';
+        snowflake.style.opacity = Math.random() * 0.4 + 0.4;
+
+        snowContainer.appendChild(snowflake);
     }
-    setInterval(createSnowflake, 150);
 </script>
 
 </body>
