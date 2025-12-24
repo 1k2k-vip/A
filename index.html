@@ -3,128 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSO VIP - Auto Theme Snow</title>
+    <title>KSO VIP - Blue Edition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Zeyar&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zeyar&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Light Mode Colors (Default) */
-            --bg-color: #f0f2f5;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --text-main: #1a1a1a;
-            --text-sub: #65676b;
-            --snow-color: #ffffff;
-            --snow-glow: rgba(0, 0, 0, 0.1);
-            --border-color: rgba(0, 0, 0, 0.05);
+            /* အစ်ကိုပြောတဲ့ အပြာနုနု နောက်ခံအရောင် */
+            --bg-color: #e3f2fd; 
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #0d47a1;
+            --text-sub: #546e7a;
             
+            /* USSD Package အရောင်များ */
             --true-color: linear-gradient(135deg, #ff416c, #ff4b2b);
             --dtac-color: linear-gradient(135deg, #00c6ff, #0072ff);
             --ais-color: linear-gradient(135deg, #a8ff78, #78ffd6);
-        }
-
-        /* Dark Mode Colors (Auto Switch) */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #0d0d11;
-                --card-bg: rgba(24, 24, 28, 0.9);
-                --text-main: #ffffff;
-                --text-sub: rgba(255, 255, 255, 0.6);
-                --snow-color: #ffffff;
-                --snow-glow: rgba(255, 255, 255, 0.8);
-                --border-color: rgba(255, 255, 255, 0.1);
-            }
         }
 
         body {
             margin: 0; padding: 20px 10px;
             font-family: 'Zeyar', sans-serif;
             background-color: var(--bg-color);
-            transition: background-color 0.5s ease;
-            min-height: 100vh; display: flex; justify-content: center; align-items: center; color: var(--text-main);
+            background-image: radial-gradient(circle at top, #bbdefb, #e3f2fd);
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
             overflow-x: hidden;
         }
 
-        /* --- Snow Styling (Big & Clear) --- */
+        /* --- နှင်းပွင့်ကြီးကြီးများ (အပေါ်ဆုံးတွင်ရှိသည်) --- */
         .snow-wrapper {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0;
+            pointer-events: none; z-index: 999;
         }
 
         .snowflake {
-            position: absolute; top: -20px;
-            background: var(--snow-color);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--snow-glow);
+            position: absolute; top: -50px;
+            background: #ffffff; border-radius: 50%;
+            opacity: 0.9; filter: blur(1px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             animation: fall linear infinite;
         }
 
         @keyframes fall {
             0% { transform: translateY(0vh) translateX(0); }
-            100% { transform: translateY(110vh) translateX(80px); }
+            100% { transform: translateY(110vh) translateX(100px); }
         }
 
         /* --- Card Design --- */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 35px 22px; border-radius: 40px; text-align: center;
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 35px 22px; border-radius: 45px; text-align: center;
             width: 100%; max-width: 380px; 
-            border: 1px solid var(--border-color);
+            border: 2px solid rgba(255, 255, 255, 0.5);
             position: relative; z-index: 10;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .main-logo { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #ff416c; background: #fff; padding: 4px; margin-bottom: 15px; }
-        
+
+        /* --- KSO VIP အရောင်စပ် (Gradient) --- */
         .logo-name-text { 
-            font-family: 'Montserrat', sans-serif; font-size: 2.5em; font-weight: 800; 
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: 'Montserrat', sans-serif; font-size: 2.8em; font-weight: 900; 
+            background: linear-gradient(45deg, #ff416c, #0d47a1, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            letter-spacing: -1px;
         }
 
-        .sub-text { color: var(--text-sub); margin-bottom: 25px; font-size: 1.1em; }
+        .sub-text { color: var(--text-sub); margin-bottom: 25px; font-size: 1.1em; font-weight: bold; }
 
-        .mini-logos { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
-        .mini-logos a { font-size: 30px; text-decoration: none; color: var(--text-main); transition: 0.3s; }
-        .mini-logos a:hover { transform: scale(1.2); color: #ff416c; }
+        /* Social Icons */
+        .mini-logos { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; }
+        .mini-logos a { font-size: 30px; color: #0d47a1; text-decoration: none; }
 
-        .package-title { 
-            padding: 12px 18px; border-radius: 15px; font-weight: 800; margin: 25px 0 10px 0; 
-            font-family: 'Montserrat', sans-serif; font-size: 0.85em; text-align: left; color: #fff;
-        }
+        /* Packages */
+        .package-title { padding: 12px 18px; border-radius: 15px; font-weight: 800; margin: 25px 0 10px 0; font-family: 'Montserrat', sans-serif; font-size: 0.85em; text-align: left; color: #fff; }
         .bg-true { background: var(--true-color); }
         .bg-dtac { background: var(--dtac-color); }
-        .bg-ais { background: var(--ais-color); color: #000; }
+        .bg-ais { background: var(--ais-color); color: #1a1a1b; }
 
-        .package-item { 
-            background: rgba(128, 128, 128, 0.1); padding: 15px; border-radius: 22px; 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 10px; border: 1px solid var(--border-color);
-        }
+        .package-item { background: #f1f8ff; padding: 16px; border-radius: 22px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border: 1px solid rgba(0,0,0,0.03); }
+        .code { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.35em; color: #0d47a1; }
+        .price { display: block; font-size: 1em; color: #546e7a; text-align: left; }
+        .call-btn { background: #2ecc71; color: white; width: 48px; height: 48px; border-radius: 16px; display: flex; justify-content: center; align-items: center; text-decoration: none; }
 
-        .code { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3em; color: var(--text-main); }
-        .price { display: block; font-size: 1em; color: var(--text-sub); text-align: left; }
+        .download-btn { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; padding: 20px; border-radius: 25px; text-decoration: none; font-weight: 800; display: block; margin-top: 30px; font-family: 'Montserrat', sans-serif; box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3); }
         
-        .call-btn { 
-            background: #2ecc71; color: white; width: 48px; height: 48px; 
-            border-radius: 16px; display: flex; justify-content: center; align-items: center; 
-            text-decoration: none; font-size: 1.3em;
-        }
-
-        .download-btn { 
-            background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; padding: 20px; 
-            border-radius: 25px; text-decoration: none; font-weight: 800; display: block; 
-            margin-top: 30px; font-family: 'Montserrat', sans-serif;
-            box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
-        }
-        
-        .msg-btn { 
-            position: fixed; bottom: 25px; right: 25px; background: #0084FF; 
-            width: 65px; height: 65px; border-radius: 20px; display: flex; 
-            justify-content: center; align-items: center; color: white; font-size: 30px; 
-            text-decoration: none; z-index: 100; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+        .msg-btn { position: fixed; bottom: 25px; right: 25px; background: #0084FF; width: 65px; height: 65px; border-radius: 22px; display: flex; justify-content: center; align-items: center; color: white; font-size: 32px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -134,7 +101,7 @@
 <div class="card">
     <img src="https://raw.githubusercontent.com/1k2k-vip/kso-udp/main/icon.png" class="main-logo">
     <div class="logo-name-text">KSO VIP</div>
-    <div class="sub-text">အကောင်းဆုံး VPN ဝန်ဆောင်မှု</div>
+    <div class="sub-text">အကောင်းဆုံး VPN ဝန်ဆောင်မှုများ</div>
 
     <div class="mini-logos">
         <a href="https://www.facebook.com/kyawsoe.oo.1292019"><i class="fab fa-facebook"></i></a>
@@ -164,22 +131,16 @@
 
 <script>
     const snowContainer = document.getElementById('snow-container');
-    const snowCount = 40; 
-
+    const snowCount = 45; 
     for (let i = 0; i < snowCount; i++) {
         const snowflake = document.createElement('div');
         snowflake.className = 'snowflake';
-        
-        // နှင်းပွင့်အရွယ်အစားကို ကြီးကြီး (10px မှ 22px အထိ) လုပ်ထားပါတယ်
-        const size = Math.random() * 12 + 10 + 'px';
+        const size = Math.random() * 15 + 10 + 'px'; 
         snowflake.style.width = size;
         snowflake.style.height = size;
-        
         snowflake.style.left = Math.random() * 100 + 'vw';
-        snowflake.style.animationDuration = Math.random() * 4 + 6 + 's';
+        snowflake.style.animationDuration = Math.random() * 4 + 5 + 's';
         snowflake.style.animationDelay = Math.random() * 5 + 's';
-        snowflake.style.opacity = Math.random() * 0.4 + 0.4;
-
         snowContainer.appendChild(snowflake);
     }
 </script>
